@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="78.726952mm"
+   height="71.581612mm"
+   viewBox="0 0 78.726952 71.581612"
+   version="1.1"
+   id="svg3303"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3300" />
+  <g
+     id="layer1"
+     transform="translate(-598.81541,-84.43536)">
+    <g
+       id="g3126"
+       transform="matrix(3.2867883,0,0,3.2867883,1200.5259,-755.10887)">
+      <path
+         style="fill:#363a4f;stroke:#939ab7;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+         d="m -177.09044,260.40643 c -1.5178,-7.97602 -3.04311,-3.28731 -4.07741,0.61774 -1.26719,4.78433 -2.47586,11.74633 0.21178,13.9342 2.68765,2.18788 17.60549,2.55309 20.05376,-0.22444 1.72219,-2.01116 1.79747,-9.16243 -0.28599,-14.76174 -1.04839,-2.81757 -2.84011,-7.59045 -4.03153,0.21462 -4.47282,-0.24807 -8.29736,-0.64548 -11.87061,0.21962 z"
+         id="path3118" />
+      <ellipse
+         style="fill:#cad3f5;fill-opacity:1;stroke:none;stroke-width:0.751225;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         id="ellipse3120"
+         cx="-177.11938"
+         cy="264.88885"
+         rx="0.71143615"
+         ry="1.081754" />
+      <ellipse
+         style="fill:#cad3f5;fill-opacity:1;stroke:none;stroke-width:0.751225;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         id="ellipse3122"
+         cx="-164.44536"
+         cy="265.06265"
+         rx="0.71143615"
+         ry="1.081754" />
+      <path
+         id="rect3180"
+         style="fill:#ed8796;stroke-width:0.502997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         d="m -172.04962,268.72252 h 1.98314 c 1.12482,0 2.35236,0.41558 2.35236,1.39248 v 0.31518 c 0,0.9769 -0.67538,2.28642 -1.76798,2.59431 -1.16148,0.3273 -2.14967,0.37074 -3.32232,-0.0824 -1.06641,-0.41203 -1.75856,-1.5351 -1.75856,-2.51199 v -0.31518 c 0,-0.9769 1.38854,-1.39249 2.51336,-1.39249 z" />
+    </g>
+  </g>
+</svg>

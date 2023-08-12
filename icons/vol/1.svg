@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="78.726952mm"
+   height="71.581612mm"
+   viewBox="0 0 78.726952 71.581612"
+   version="1.1"
+   id="svg3303"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3300" />
+  <g
+     id="layer1"
+     transform="translate(-272.27442,-82.87765)">
+    <g
+       id="g2797"
+       transform="matrix(3.2867883,0,0,3.2867883,873.98491,-756.66658)">
+      <path
+         style="fill:#363a4f;stroke:#939ab7;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+         d="m -177.09044,260.40643 c -1.5178,-7.97602 -3.04311,-3.28731 -4.07741,0.61774 -1.26719,4.78433 -2.47586,11.74633 0.21178,13.9342 2.68765,2.18788 17.60549,2.55309 20.05376,-0.22444 1.72219,-2.01116 1.79747,-9.16243 -0.28599,-14.76174 -1.04839,-2.81757 -2.84011,-7.59045 -4.03153,0.21462 -4.47282,-0.24807 -8.29736,-0.64548 -11.87061,0.21962 z"
+         id="path1637" />
+      <ellipse
+         style="fill:#cad3f5;fill-opacity:1;stroke:none;stroke-width:0.751225;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         id="path2784"
+         cx="-177.11938"
+         cy="264.88885"
+         rx="0.71143615"
+         ry="1.081754" />
+      <ellipse
+         style="fill:#cad3f5;fill-opacity:1;stroke:none;stroke-width:0.751225;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         id="ellipse2786"
+         cx="-164.44536"
+         cy="265.06265"
+         rx="0.71143615"
+         ry="1.081754" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="78.726952mm"
+   height="71.581612mm"
+   viewBox="0 0 78.726952 71.581612"
+   version="1.1"
+   id="svg3303"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs3300" />
+  <g
+     id="layer1"
+     transform="translate(-688.31541,-85.66908)">
+    <g
+       id="g3192"
+       transform="matrix(3.2867883,0,0,3.2867883,1290.0259,-753.87515)">
+      <path
+         style="fill:#363a4f;stroke:#939ab7;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1"
+         d="m -177.09044,260.40643 c -1.5178,-7.97602 -3.04311,-3.28731 -4.07741,0.61774 -1.26719,4.78433 -2.47586,11.74633 0.21178,13.9342 2.68765,2.18788 17.60549,2.55309 20.05376,-0.22444 1.72219,-2.01116 1.79747,-9.16243 -0.28599,-14.76174 -1.04839,-2.81757 -2.84011,-7.59045 -4.03153,0.21462 -4.47282,-0.24807 -8.29736,-0.64548 -11.87061,0.21962 z"
+         id="path3184" />
+      <ellipse
+         style="fill:#cad3f5;fill-opacity:1;stroke:none;stroke-width:0.751225;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         id="ellipse3186"
+         cx="-177.11938"
+         cy="264.88885"
+         rx="0.71143615"
+         ry="1.081754" />
+      <ellipse
+         style="fill:#cad3f5;fill-opacity:1;stroke:none;stroke-width:0.751225;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         id="ellipse3188"
+         cx="-164.44536"
+         cy="265.06265"
+         rx="0.71143615"
+         ry="1.081754" />
+      <path
+         id="path3190"
+         style="fill:#ed8796;stroke-width:0.684922;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:32.5;paint-order:stroke fill markers"
+         d="m -172.08572,267.02806 h 2.23955 c 1.27026,0 2.65651,0.68234 2.65651,2.2863 v 0.51749 c 0,1.60396 -0.76271,3.75405 -1.99657,4.25956 -1.31165,0.53739 -2.42762,0.60872 -3.75189,-0.1352 -1.20428,-0.67651 -1.98593,-2.52046 -1.98593,-4.12442 v -0.51749 c 0,-1.60395 1.56807,-2.2863 2.83833,-2.2863 z" />
+    </g>
+  </g>
+</svg>
