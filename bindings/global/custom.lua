@@ -106,7 +106,7 @@ awful.keyboard.append_global_keybindings {
 
 	awful.key {
 		modifiers   = { mod.super, mod.alt },
-		key         = 'KP_Next',
+		key         = '0',
 		description = 'Save Posts',
 		group       = 'applications',
 		on_press    = function()
@@ -209,5 +209,14 @@ awful.keyboard.append_global_keybindings {
 			naughty.notify({ text = "Window Gaps Reset" })
 		end,
 	},
+	-- awful.key {
+	-- 	modifiers   = { mod.super, mod.alt },
+	-- 	key         = '1',
+	-- 	description = 'testttt',
+	-- 	group       = 'testtt',
+	-- 	on_press    = function()
+	-- 		naughty.notify({ text = "test" })
+	-- 	end,
+	-- },
 
 }
