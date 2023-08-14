@@ -18,3 +18,5 @@ require 'rules'
 require 'signals'
 
 require 'timers'
+
+require 'naughty'.notify { text = require 'gears'.filesystem.get_configuration_dir() }
