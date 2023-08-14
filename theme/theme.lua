@@ -2,40 +2,42 @@
 -- Default awesome theme --
 ---------------------------
 
-local theme_assets                              = require("beautiful.theme_assets")
-local xresources                                = require("beautiful.xresources")
-local rnotification                             = require("ruled.notification")
-local dpi                                       = xresources.apply_dpi
+local theme_assets          = require("beautiful.theme_assets")
+local xresources            = require("beautiful.xresources")
+local rnotification         = require("ruled.notification")
+local dpi                   = xresources.apply_dpi
 
-local gfs                                       = require("gears.filesystem")
-local themes_path                               = gfs.get_themes_dir()
-local config = gfs.get_configuration_dir()
+local gfs                   = require("gears.filesystem")
+local themes_path           = gfs.get_themes_dir()
+local config                = gfs.get_configuration_dir()
 
-local theme                                     = {}
+local theme                 = {}
+
+theme.themeColor            = theme.catpuccin.teal
 
 -- local tokyoNight = require("colors.tokyoNight")
 -- local brightColors = require("colors.tokyoNightColors")
 
-theme.font                                      = "sans 10"
+theme.font                  = "sans 10"
 
-theme.bg_normal                                 = "#222222"
-theme.bg_focus                                  = "#535d6c"
-theme.bg_urgent                                 = "#ff0000"
-theme.bg_minimize                               = "#444444"
-theme.bg_systray                                = theme.bg_normal
+theme.bg_normal             = "#222222"
+theme.bg_focus              = theme.themeColor
+theme.bg_urgent             = theme.catpuccin.red
+theme.bg_minimize           = "#444444"
+theme.bg_systray            = theme.bg_normal
 
-theme.fg_normal                                 = "#aaaaaa"
-theme.fg_focus                                  = "#ffffff"
-theme.fg_urgent                                 = "#ffffff"
-theme.fg_minimize                               = "#ffffff"
+theme.fg_normal             = "#aaaaaa"
+theme.fg_focus              = "#ffffff"
+theme.fg_urgent             = "#ffffff"
+theme.fg_minimize           = "#ffffff"
 
-theme.useless_gap                               = dpi(3)
-theme.border_width                              = dpi(3)
-theme.border_color_normal                       = "#000000"
-theme.border_color_active                       = "#535d6c"
-theme.border_color_marked                       = "#91231c"
+theme.useless_gap           = dpi(3)
+theme.border_width          = dpi(3)
+theme.border_color_normal   = "#000000"
+theme.border_color_active   = theme.themeColor
+theme.border_color_marked   = "#91231c"
 
-theme.catpuccin = require("colors.catpuccin")
+theme.catpuccin             = require("colors.catpuccin")
 
 -- There are other variable sets
 -- overriding the default one when
@@ -50,11 +52,11 @@ theme.catpuccin = require("colors.catpuccin")
 --theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
-local taglist_square_size                       = dpi(4)
-theme.taglist_squares_sel                       = theme_assets.taglist_squares_sel(
+local taglist_square_size   = dpi(4)
+theme.taglist_squares_sel   = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
-theme.taglist_squares_unsel                     = theme_assets.taglist_squares_unsel(
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
 )
 
@@ -67,9 +69,9 @@ theme.taglist_squares_unsel                     = theme_assets.taglist_squares_u
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon                         = themes_path .. "default/submenu.png"
-theme.menu_height                               = dpi(15)
-theme.menu_width                                = dpi(100)
+theme.menu_submenu_icon     = themes_path .. "default/submenu.png"
+theme.menu_height           = dpi(15)
+theme.menu_width            = dpi(100)
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -77,7 +79,7 @@ theme.menu_width                                = dpi(100)
 --theme.bg_widget = "#cc0000"
 
 
-theme.wallpaper                                 = "/home/harshit/.config/awesome/theme/arch-black-4k.png"
+theme.wallpaper  = "/home/harshit/.config/awesome/theme/arch-black-4k.png"
 -- theme.wallpaper                                 = themes_path .. "default/background.png"
 -- theme.wallpaper                                 = "~/.config/awesome/theme/Windows crash error [1920x1080].png"
 
@@ -88,7 +90,7 @@ theme.wallpaper                                 = "/home/harshit/.config/awesome
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
-theme.icon_theme                                = nil
+theme.icon_theme = nil
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal('request::rules', function()
@@ -116,7 +118,7 @@ theme.wibar_height = dpi(40)
 
 
 
-theme.icon={
+theme.icon = {
     mutedCat = config .. "icons/vol/1.svg",
     volCat2 = config .. "icons/vol/2.svg",
     volCat3 = config .. "icons/vol/3.svg",
