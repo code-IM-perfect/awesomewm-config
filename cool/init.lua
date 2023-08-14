@@ -4,6 +4,7 @@ local wibox = require("wibox")
 ---- MY CUSTOM FUNCTIONS -----
 local Cool = {}
 
+math.randomseed(os.clock() * os.time() * math.random(247598))
 
 ----------------------------------- General Functions --------------------------------------------
 
@@ -18,11 +19,12 @@ Cool.splitString = function(inputstr, sep)
 	return t
 end
 
-
-
-
-
------------------------------------- Widget Manipulating Functions ------------------------------
+Cool.shuffleTable = function(t)
+	for i = #t, 2, -1 do
+		local j = math.random(i)
+		t[i], t[j] = t[j], t[i]
+	end
+end
 
 
 
@@ -46,6 +48,13 @@ end
 
 
 
+
+
+
+
+
+
+------------------------------------ Widget Manipulating Functions ------------------------------
 
 
 
