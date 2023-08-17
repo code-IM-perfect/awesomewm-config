@@ -2,7 +2,9 @@ local awful = require 'awful'
 local naughty = require 'naughty'
 local beautiful = require 'beautiful'
 local mod = require 'bindings.mod'
-local cool = require 'cool'
+local modify = require 'cool.modify'
+
+local terminal = require'config.apps'.terminal
 
 
 -- launch apps
@@ -110,7 +112,29 @@ awful.keyboard.append_global_keybindings {
 		description = 'Save Posts',
 		group       = 'applications',
 		on_press    = function()
-			awful.spawn.with_shell("konsole -e python '/home/harshit/Harshit_Work/Funny_Stuff/Save_Posts.py'") --- gotta change this
+			awful.spawn.with_shell(terminal.." -e python '/home/harshit/Harshit_Work/Funny_Stuff/Save_Posts.py'") --- gotta change this
+		end,
+	},
+}
+
+-- Brightness
+awful.keyboard.append_client_keybindings{
+	awful.key {
+		modifiers   = {},
+		key         = 'XF86MonBrightnessUp',
+		description = 'Increase Brightness',
+		group       = 'system',
+		on_press    = function()
+			modify.brightness("+5%")
+		end,
+	},
+	awful.key {
+		modifiers   = {},
+		key         = 'XF86MonBrightnessDown',
+		description = 'Decrease Brightness',
+		group       = 'system',
+		on_press    = function()
+			modify.brightness("5%-")
 		end,
 	},
 }
@@ -134,29 +158,45 @@ awful.keyboard.append_global_keybindings {
 
 
 	awful.key({ "Control" }, "KP_Begin", function()
-			toggle_mute()
+			modify.toggle_mute()
+		end,
+		{ description = "Toggle Mute", group = "Media" }),
+
+	awful.key({}, "XF86AudioMute", function()
+			modify.toggle_mute()
 		end,
 		{ description = "Toggle Mute", group = "Media" }),
 
 	awful.key({}, "KP_Up", function()
-			change_vol("1%+")
-			updateVolume()
+			modify.change_vol("1%+")
+			modify.updateVolume()
+		end, -- Num+up
+		{ description = "Increase Volume(1%)", group = "Media" }),
+
+	awful.key({}, "XF86AudioRaiseVolume", function()
+			modify.change_vol("1%+")
+			modify.updateVolume()
 		end, -- Num+up
 		{ description = "Increase Volume(1%)", group = "Media" }),
 
 	awful.key({ "Control" }, "KP_Up", function()
-			change_vol("5%+")
+			modify.change_vol("5%+")
 		end, -- Num+up
 		{ description = "Increase Volume(5%)", group = "Media" }),
 
 	awful.key({}, "KP_Down", function()
-			change_vol("1%-")
+			modify.change_vol("1%-")
 		end, -- Num+down
 		{ description = "Decrease Volume(1%)", group = "Media" }),
+	awful.key({}, "XF86AudioLowerVolume", function()
+			modify.change_vol("1%-")
+		end, -- Num+down
+		{ description = "Decrease Volume(1%)", group = "Media" }),
+
 	awful.key({ "Control" }, "KP_Down", function()
-			change_vol("5%-")
+			modify.change_vol("5%-")
 		end,
-		{ description = "Decrease Volume(5%)", group = "Media" }),
+		{ description = "Decrease Volume(5%)", group = "Media" })
 
 }
 
