@@ -51,13 +51,13 @@ theme.taglist_bg_urgent    = theme.bg_urgent
 theme.taglist_bg_focus    = theme.catpuccin.sapphire
 
 theme.tasklist_fg_focus    = theme.catpuccin.crust
-theme.tasklist_bg_minimize    = theme.catpuccin.mantle
+theme.tasklist_bg_minimize    = theme.catpuccin.surface0
 theme.tasklist_bg_normal    = theme.catpuccin.surface0
 theme.tasklist_bg_urgent    = theme.bg_urgent
 
 theme.tasklist_shape_border_color = theme.themeColor
 theme.tasklist_shape_border_width = 3
-theme.tasklist_shape_border_color_minimized = 0
+theme.tasklist_shape_border_color_minimized = nil
 theme.tasklist_shape_border_width_minimized = 0
 
 -- theme. = theme.catpuccin.
