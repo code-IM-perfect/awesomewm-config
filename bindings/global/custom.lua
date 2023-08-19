@@ -3,6 +3,7 @@ local naughty = require 'naughty'
 local beautiful = require 'beautiful'
 local mod = require 'bindings.mod'
 local modify = require 'cool.modify'
+-- local widgets = require 'widgets'
 
 local terminal = require'config.apps'.terminal
 
@@ -255,7 +256,18 @@ awful.keyboard.append_global_keybindings {
 	-- 	description = 'testttt',
 	-- 	group       = 'testtt',
 	-- 	on_press    = function()
-	-- 		naughty.notify({ text = "test" })
+	-- 		widgets.batteryInnerBar.forced_height = widgets.batteryInnerBar.forced_height - 0.5
+	-- 		naughty.notify({ text = tostring(widgets.batteryInnerBar.forced_height) })
+	-- 	end,
+	-- },
+	-- awful.key {
+	-- 	modifiers   = { mod.super, mod.alt },
+	-- 	key         = '2',
+	-- 	description = 'testttt',
+	-- 	group       = 'testtt',
+	-- 	on_press    = function()
+	-- 		widgets.batteryInnerBar.forced_height = widgets.batteryInnerBar.forced_height + 0.5
+	-- 		naughty.notify({ text = tostring(widgets.batteryInnerBar.forced_height) })
 	-- 	end,
 	-- },
 
