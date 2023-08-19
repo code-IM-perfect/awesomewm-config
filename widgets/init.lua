@@ -41,21 +41,63 @@ end
 
 local batteryInternalMargins = 6
 _M.batteryText = wibox.widget.textbox("69%")
-_M.batteryIcon = wibox.widget.background()
-_M.batteryContainer = wibox.container.background({{
-	_M.batteryIcon,
-	_M.batteryText,
-	layout=wibox.layout.fixed.horizontal
-},
+_M.batteryInnerBar = wibox.container.background()
+_M.batteryInnerBar.forced_width = 16
+_M.batteryInnerBar.forced_height = 21.5
+
+_M.batteryCase = wibox.container.background({
+	_M.batteryInnerBar,
+	widget=wibox.container.place,
+	valign="bottom"
+})
+
+_M.batteryCase.border_width = 1
+_M.batteryCase.border_color = beautiful.fg_normal
+_M.batteryCase.forced_height=23
+
+_M.batteryCap = wibox.widget.background()
+
+_M.batteryCap.bg=beautiful.fg_normal
+_M.batteryCap.forced_height=3
+
+
+_M.batteryContainer = wibox.container.background({
+	{
+		{
+			{
+				{
+					_M.batteryCap,
+					widget=wibox.container.margin,
+					right= 4,
+					left=4,
+					top=0,
+				},
+			_M.batteryCase,
+			layout=wibox.layout.fixed.vertical,
+		},
+			widget=wibox.container.margin,
+			margins=4
+		},
+		_M.batteryText,
+		layout=wibox.layout.fixed.horizontal
+	},
 widget=wibox.container.margin,
 right = batteryInternalMargins,
 left = batteryInternalMargins
 })
+
 -- _M.batteryContainer.bg = create.twoSolidColors(0,0,0,35,0.5,beautiful.catpuccin.red,beautiful.catpuccin.green)
 _M.batteryContainer.bg = beautiful.catpuccin.surface0
 _M.batteryContainer.shape = function (cr, width, height, _)
 	gears.shape.rounded_rect(cr,width,height,height/4)
 end
+
+_M.batteryInnerBar.border_width = 3
+_M.batteryInnerBar.border_color = _M.batteryContainer.bg
+
+_M.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,1,beautiful.fg_normal,beautiful.catpuccin.surface0)
+-- _M.batteryInnerBar.bg = gears.color.create_linear_pattern("0,0:0,21.5:")
+
 
 _M.volume_text = wibox.widget.textbox("69%")
 _M.volume_icon = wibox.widget.imagebox(gears.surface.load_uncached(beautiful.icon.mutedCat))
@@ -83,6 +125,7 @@ _M.volumeBox.bg = beautiful.catpuccin.surface0
 _M.volumeBox.shape = function (cr, width, height, _)
 	gears.shape.rounded_rect(cr,width,height,height/4)
 end
+
 
 
 function _M.create_promptbox() return awful.widget.prompt() end
@@ -262,7 +305,20 @@ function _M.create_wibox(s)
 				layout = wibox.layout.fixed.horizontal,
 				-- _M.keyboardlayout,
 				create.widgetSpacer(10),
-				wibox.widget.systray(),
+				{
+					{
+						wibox.widget.systray(),
+						widget=wibox.container.margin,
+						left = 6,
+						right = 6,
+					},
+					widget=wibox.container.background,
+					bg = beautiful.catpuccin.surface0,
+					shape = function (cr, width, height, _)
+						gears.shape.rounded_rect(cr,width,height,height/4)
+					end
+				},
+				create.widgetSpacer(6),
 				_M.volumeBox,
 				-- {
 				-- 	{
@@ -296,8 +352,8 @@ function _M.create_wibox(s)
 				widget=wibox.container.background,
 				bg = beautiful.catpuccin.surface0,
 				shape = function (cr, width, height, _)
-	gears.shape.rounded_rect(cr,width,height,height/4)
-end
+					gears.shape.rounded_rect(cr,width,height,height/4)
+				end
 			}
 			}
 		}
