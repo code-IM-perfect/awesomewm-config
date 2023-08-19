@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local gears = require("gears")
 local awful = require("awful")
 local naughty = require("naughty")
+local create  = require("cool.create")
 
 local widgets = require("widgets")
 
@@ -54,26 +55,40 @@ Cool.toggle_mute = function()
 	awful.spawn.easy_async_with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", function() Cool.updateVolume() end)
 end
 
+local batteryBarColor = nil
+
 Cool.updateBattery = function()
     awful.spawn.easy_async_with_shell(
         "upower -i $(upower -e | grep BAT) | grep --color=never -E 'state|to full|time to empty|percentage'",
         function(stdout, _, _, _)
             widgets.batteryText.text = tonumber(string.sub(stdout, -5, -3)) .. "%"
+			-- widgets.batteryIcon.forced_height = tonumber(string.sub(stdout, -5, -3)) * 0.215
+			if tonumber(string.sub(stdout, -5, -3)) <= 40 then
+				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.red,beautiful.catpuccin.surface0)
+				widgets.batteryCap.bg=beautiful.catpuccin.red
+				widgets.batteryCase.border_color=beautiful.catpuccin.red
+				else
+					widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.fg_normal,beautiful.catpuccin.surface0)
+					widgets.batteryCap.bg=beautiful.fg_normal
+					widgets.batteryCase.border_color=beautiful.fg_normal
+			end
             -- naughty.notify{text=stdout}
-            if tonumber(string.sub(stdout, -5, -3)) < 30 then
-                naughty.notify { title="BATTERY IS BELOW 30%", text = "better plug it in fast"}
-                naughty.notify { title="BATTERY IS BELOW 30%", text = "better plug it in fast"}
-                naughty.notify { title="BATTERY IS BELOW 30%", text = "better plug it in fast"}
-                naughty.notify { title="BATTERY IS BELOW 30%", text = "better plug it in fast"}
-                naughty.notify { title="BATTERY IS BELOW 30%", text = "better plug it in fast"}
-                if tonumber(string.sub(stdout, -5, -3)) < 11 then
-                    awful.spawn.with_shell("systemctl hibernate")
-                end
+            if tonumber(string.sub(stdout, -5, -3)) <= 35 then
+                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+                -- if tonumber(string.sub(stdout, -5, -3)) < 11 then
+                --     awful.spawn.with_shell("systemctl hibernate")
+                -- end
             end
         end)
 end
 
 Cool.brightness = function (val)
+	-- awful.spawn.with_shell("brightnessctl s "..val)
 	awful.spawn.easy_async_with_shell(("brightnessctl s "..val),function (stdout, _, _, _)
 		local currentB = stdout:match("%(([^%)]+)%)")
 		naughty.notify{title="Brightness changed" ,text = currentB}
