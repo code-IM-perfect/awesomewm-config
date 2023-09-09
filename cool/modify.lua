@@ -57,6 +57,9 @@ end
 
 local batteryBarColor = nil
 
+local batteryWarning = 35
+local batteryWarningCritical = 20
+
 Cool.updateBattery = function()
     awful.spawn.easy_async_with_shell(
         "upower -i $(upower -e | grep BAT) | grep --color=never -E 'state|to full|time to empty|percentage'",
@@ -73,17 +76,14 @@ Cool.updateBattery = function()
 					widgets.batteryCase.border_color=beautiful.fg_normal
 			end
             -- naughty.notify{text=stdout}
-            if tonumber(string.sub(stdout, -5, -3)) <= 35 then
-                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
-                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
-                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
-                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
-                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
-                naughty.notify { title="BATTERY IS BELOW 35%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+				if tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical then
+					naughty.notify { title="BATTERY IS BELOW "..batteryWarningCritical.."%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+				elseif tonumber(string.sub(stdout, -5, -3)) <= batteryWarning then
+					naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in fast", timeout=0 }
+				end
                 -- if tonumber(string.sub(stdout, -5, -3)) < 11 then
                 --     awful.spawn.with_shell("systemctl hibernate")
                 -- end
-            end
         end)
 end
 
