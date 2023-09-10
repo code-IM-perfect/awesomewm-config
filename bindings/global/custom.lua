@@ -64,7 +64,8 @@ awful.keyboard.append_global_keybindings {
 		key         = 's',
 		description = 'Open Spotify',
 		group       = 'applications',
-		on_press    = function() awful.spawn("flatpak run com.spotify.Client") end,
+		-- on_press    = function() awful.spawn("flatpak run com.spotify.Client") end,
+		on_press    = function() awful.spawn("spotify") end,
 	},
 
 	awful.key {
