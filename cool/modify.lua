@@ -74,7 +74,7 @@ Cool.updateBattery = function()
 				widgets.batteryCase.border_color=beautiful.catpuccin.red
 
 			elseif tonumber(string.sub(stdout, -5, -3)) <= batteryWarning then
-				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in fast", timeout=0 }
+				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=0 }
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.yellow,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.yellow
 				widgets.batteryCase.border_color=beautiful.catpuccin.yellow
