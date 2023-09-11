@@ -102,6 +102,14 @@ awful.keyboard.append_global_keybindings {
 
 	awful.key {
 		modifiers   = { mod.super, mod.ctrl },
+		key         = 'b',
+		description = 'Open Bluetooth Settings',
+		group       = 'applications',
+		on_press    = function() awful.spawn("kcmshell5 kcm_bluetooth") end,
+	},
+
+	awful.key {
+		modifiers   = { mod.super, mod.ctrl },
 		key         = 'o',
 		description = 'Open Okular',
 		group       = 'applications',
