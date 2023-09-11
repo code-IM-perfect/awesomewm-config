@@ -67,22 +67,27 @@ Cool.updateBattery = function()
             widgets.batteryText.text = tonumber(string.sub(stdout, -5, -3)) .. "%"
 			-- widgets.batteryIcon.forced_height = tonumber(string.sub(stdout, -5, -3)) * 0.215
             -- naughty.notify{text=stdout}
-			if tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical then
+			if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical) and (string.find(stdout,"discharging"))then
 				naughty.notify { title="BATTERY IS BELOW "..batteryWarningCritical.."%", text = "better plug it in fast", preset = naughty.config.presets.critical}
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.red,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.red
 				widgets.batteryCase.border_color=beautiful.catpuccin.red
 
-			elseif tonumber(string.sub(stdout, -5, -3)) <= batteryWarning then
+			elseif (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) and (string.find(stdout,"discharging")) then
 				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=0 }
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.yellow,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.yellow
 				widgets.batteryCase.border_color=beautiful.catpuccin.yellow
 
-			else
+			elseif string.find(stdout,"discharging") then
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.fg_normal,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.fg_normal
 				widgets.batteryCase.border_color=beautiful.fg_normal
+
+			else
+				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.green,beautiful.catpuccin.surface0)
+				widgets.batteryCap.bg=beautiful.catpuccin.green
+				widgets.batteryCase.border_color=beautiful.catpuccin.green
 			end
                -- if tonumber(string.sub(stdout, -5, -3)) < 11 then
                --     awful.spawn.with_shell("systemctl hibernate")
