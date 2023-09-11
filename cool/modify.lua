@@ -57,7 +57,7 @@ end
 
 local batteryBarColor = nil
 
-local batteryWarning = 35
+local batteryWarning = 30
 local batteryWarningCritical = 20
 
 Cool.updateBattery = function()
