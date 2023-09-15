@@ -178,36 +178,15 @@ awful.keyboard.append_client_keybindings{
 
 -- Media Control
 awful.keyboard.append_global_keybindings {
-	awful.key({}, "KP_Begin", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end,
-		{ description = "Play/Pause", group = "Media" }),
-	awful.key({ "Shift" }, "KP_Begin", function() awful.spawn("playerctl -p spotify play-pause", false) end,
-		{ description = "Play/Pause", group = "Media" }),
-
 	awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
 	awful.key({}, "XF86AudioPause", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
 	awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl -i Gwenview -p playerctld next", false) end),
 	awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end),
-	awful.key({ "Control" }, "KP_Right", function() awful.spawn("playerctl -i Gwenview -p playerctld next", false) end,
-		{ description = "Next", group = "Media" }),
-	awful.key({ "Control" }, "KP_Left", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end,
-		{ description = "Previous", group = "Media" }),
-
-
-	awful.key({ "Control" }, "KP_Begin", function()
-			modify.toggle_mute()
-		end,
-		{ description = "Toggle Mute", group = "Media" }),
 
 	awful.key({}, "XF86AudioMute", function()
 			modify.toggle_mute()
 		end,
 		{ description = "Toggle Mute", group = "Media" }),
-
-	awful.key({}, "KP_Up", function()
-			modify.change_vol("1%+")
-			modify.updateVolume()
-		end, -- Num+up
-		{ description = "Increase Volume(1%)", group = "Media" }),
 
 	awful.key({}, "XF86AudioRaiseVolume", function()
 			modify.change_vol("1%+")
@@ -215,26 +194,15 @@ awful.keyboard.append_global_keybindings {
 		end, -- Num+up
 		{ description = "Increase Volume(1%)", group = "Media" }),
 
-	awful.key({ "Control" }, "KP_Up", function()
-			modify.change_vol("5%+")
-		end, -- Num+up
-		{ description = "Increase Volume(5%)", group = "Media" }),
-
-	awful.key({}, "KP_Down", function()
-			modify.change_vol("1%-")
-		end, -- Num+down
-		{ description = "Decrease Volume(1%)", group = "Media" }),
 	awful.key({}, "XF86AudioLowerVolume", function()
 			modify.change_vol("1%-")
 		end, -- Num+down
 		{ description = "Decrease Volume(1%)", group = "Media" }),
 
-	awful.key({ "Control" }, "KP_Down", function()
-			modify.change_vol("5%-")
-		end,
-		{ description = "Decrease Volume(5%)", group = "Media" })
 
 }
+
+
 
 -- Rofi
 awful.keyboard.append_global_keybindings {
@@ -253,6 +221,22 @@ awful.keyboard.append_global_keybindings {
 		description = 'Rofi Runner',
 		group       = 'launcher',
 		on_press    = function() awful.spawn("rofi -show run -theme ~/.config/rofi/launchers/type-1/style-6.rasi") end,
+	},
+
+	awful.key {
+		modifiers   = {  },
+		key         = 'XF86PowerOff',
+		description = 'Rofi Powermenu',
+		group       = 'launcher',
+		on_press    = function() awful.spawn("/home/harshit/.config/rofi/scripts/powermenu_t1") end,
+	},
+
+	awful.key {
+		modifiers   = { },
+		key         = '#248',
+		description = 'Take a Screenshot',
+		group       = 'launcher',
+		on_press    = function() awful.spawn("spectacle -r") end,
 	},
 }
 
@@ -307,3 +291,46 @@ awful.keyboard.append_global_keybindings {
 	-- },
 
 }
+
+
+
+
+
+
+-- --- For Desktop
+-- awful.keyboard.append_global_keybindings {
+
+-- 	awful.key({ "Control" }, "KP_Right", function() awful.spawn("playerctl -i Gwenview -p playerctld next", false) end,
+-- 	{ description = "Next", group = "Media" }),
+-- awful.key({ "Control" }, "KP_Left", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end,
+-- 	{ description = "Previous", group = "Media" }),
+
+
+-- awful.key({ "Control" }, "KP_Begin", function()
+-- 		modify.toggle_mute()
+-- 	end,
+-- 	{ description = "Toggle Mute", group = "Media" }),
+
+-- 	awful.key({}, "KP_Begin", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end,
+-- 		{ description = "Play/Pause", group = "Media" }),
+-- 	awful.key({ "Shift" }, "KP_Begin", function() awful.spawn("playerctl -p spotify play-pause", false) end,
+-- 		{ description = "Play/Pause", group = "Media" }),
+
+-- 		awful.key({}, "KP_Up", function()
+-- 			modify.change_vol("1%+")
+-- 			modify.updateVolume()
+-- 		end, -- Num+up
+-- 		{ description = "Increase Volume(1%)", group = "Media" }),
+-- 	awful.key({ "Control" }, "KP_Up", function()
+-- 			modify.change_vol("5%+")
+-- 		end, -- Num+up
+-- 		{ description = "Increase Volume(5%)", group = "Media" }),
+-- 	awful.key({}, "KP_Down", function()
+-- 			modify.change_vol("1%-")
+-- 		end, -- Num+down
+-- 		{ description = "Decrease Volume(1%)", group = "Media" }),
+-- 	awful.key({ "Control" }, "KP_Down", function()
+-- 			modify.change_vol("5%-")
+-- 		end,
+-- 		{ description = "Decrease Volume(5%)", group = "Media" }),
+-- }
