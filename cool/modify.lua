@@ -57,8 +57,8 @@ end
 
 local batteryBarColor = nil
 
-local batteryWarning = 30
-local batteryWarningCritical = 20
+local batteryWarning = 25
+local batteryWarningCritical = 15
 
 Cool.updateBattery = function()
     awful.spawn.easy_async_with_shell(
@@ -68,13 +68,14 @@ Cool.updateBattery = function()
 			-- widgets.batteryIcon.forced_height = tonumber(string.sub(stdout, -5, -3)) * 0.215
             -- naughty.notify{text=stdout}
 			if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical) and (string.find(stdout,"discharging"))then
-				naughty.notify { title="BATTERY IS BELOW "..batteryWarningCritical.."%", text = "better plug it in fast", preset = naughty.config.presets.critical}
+				naughty.notify { title="BATTERY IS BELOW "..batteryWarningCritical.."%", text = "better plug it in fast", preset = naughty.config.presets.critical, timeout=20}
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.red,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.red
 				widgets.batteryCase.border_color=beautiful.catpuccin.red
 
 			elseif (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) and (string.find(stdout,"discharging")) then
-				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=0 }
+				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=20 }
+				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=20 }
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.yellow,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.yellow
 				widgets.batteryCase.border_color=beautiful.catpuccin.yellow
@@ -95,11 +96,18 @@ Cool.updateBattery = function()
         end)
 end
 
+local bilkul = {}
+
 Cool.brightness = function (val)
 	-- awful.spawn.with_shell("brightnessctl s "..val)
 	awful.spawn.easy_async_with_shell(("brightnessctl s "..val),function (stdout, _, _, _)
 		local currentB = stdout:match("%(([^%)]+)%)")
-		naughty.notify{title="Brightness changed" ,text = currentB}
+		-- naughty.notify{title="Brightness changed" ,text = currentB}
+		bilkul = naughty.notify({
+			title = "Brightness changed",
+			text = currentB,
+			replaces_id = bilkul.id,
+		})
 	end)
 		-- naughty.notify { text = ("brightnessctl s "..val) }
 	-- naughty.notify{text="yo"}
