@@ -155,6 +155,24 @@ awful.keyboard.append_client_keybindings{
 			modify.brightness("5%-")
 		end,
 	},
+	awful.key {
+		modifiers   = {mod.ctrl},
+		key         = 'XF86MonBrightnessUp',
+		description = 'Increase Brightness 1%',
+		group       = 'system',
+		on_press    = function()
+			modify.brightness("+1%")
+		end,
+	},
+	awful.key {
+		modifiers   = {mod.ctrl},
+		key         = 'XF86MonBrightnessDown',
+		description = 'Decrease Brightness 1%',
+		group       = 'system',
+		on_press    = function()
+			modify.brightness("1%-")
+		end,
+	},
 }
 
 
