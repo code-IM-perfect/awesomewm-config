@@ -24,7 +24,7 @@ awful.keyboard.append_global_keybindings {
 		key         = 'f',
 		description = 'Open Firefox Dev Edition',
 		group       = 'applications',
-		on_press    = function() awful.spawn("firefox-developer-edition") end,
+		on_press    = function() awful.spawn("firefox -P nooooo") end,
 	},
 
 	awful.key {
@@ -106,6 +106,14 @@ awful.keyboard.append_global_keybindings {
 		description = 'Open Bluetooth Settings',
 		group       = 'applications',
 		on_press    = function() awful.spawn("kcmshell5 kcm_bluetooth") end,
+	},
+
+	awful.key {
+		modifiers   = { mod.super, mod.ctrl },
+		key         = 'w',
+		description = 'Open Network Settings',
+		group       = 'applications',
+		on_press    = function() awful.spawn("kcmshell5 kcm_networkmanagement") end,
 	},
 
 	awful.key {
