@@ -24,8 +24,4 @@ require 'timers'
 
 require 'cool.modify'.updateVolume()
 
--- {{	Autostart
-awful.spawn.with_shell("klipper")
-awful.spawn.with_shell("playerctld daemon")
-awful.spawn.with_shell("/usr/lib/polkit-1/polkit-agent-helper-1")
--- }}
+require'autostart'

@@ -179,6 +179,7 @@ awful.keyboard.append_client_keybindings{
 -- Media Control
 awful.keyboard.append_global_keybindings {
 	awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
+	awful.key({mod.shift}, "XF86AudioPlay", function() awful.spawn.with_shell("playerctl -i Gwenview -p spotify,playerctld play-pause") end),
 	awful.key({}, "XF86AudioPause", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
 	awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl -i Gwenview -p playerctld next", false) end),
 	awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end),
@@ -229,6 +230,14 @@ awful.keyboard.append_global_keybindings {
 		description = 'Rofi Powermenu',
 		group       = 'launcher',
 		on_press    = function() awful.spawn("/home/harshit/.config/rofi/scripts/powermenu_t1") end,
+	},
+
+	awful.key {
+		modifiers   = { mod.shift },
+		key         = 'XF86PowerOff',
+		description = 'Turn off Screen',
+		group       = 'launcher',
+		on_press    = function() awful.spawn.with_shell("xset dpms force off; sleep 0.5; xset dpms force off") end,
 	},
 
 	awful.key {

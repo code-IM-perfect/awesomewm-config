@@ -17,6 +17,9 @@ local theme               = {}
 
 theme.catpuccin           = require("colors.catpuccin")
 
+theme.catpuccin.text = "#e9edfb"
+-- theme.catpuccin.text = "#ffffff"
+
 theme.themeColor          = theme.catpuccin.sapphire
 
 -- local tokyoNight = require("colors.tokyoNight")
@@ -25,7 +28,9 @@ theme.themeColor          = theme.catpuccin.sapphire
 -- theme.font                = "Source Sans Pro 11"
 theme.font                = "Sans 11"
 
-theme.bg_normal           = theme.catpuccin.base
+theme.bg_normal           = theme.catpuccin.crust
+-- theme.bg_normal           = theme.catpuccin.base
+theme.wibar_widget_background = theme.catpuccin.surface0
 theme.bg_focus            = theme.themeColor
 theme.bg_urgent           = theme.catpuccin.red
 theme.bg_minimize         = "#444444"
@@ -46,13 +51,13 @@ theme.taglist_fg_focus    = theme.catpuccin.crust
 theme.taglist_fg_occupied    = theme.catpuccin.crust
 -- theme.taglist_bg_occupied    = theme.catpuccin.surface0
 theme.taglist_bg_occupied    = theme.catpuccin.yellow
-theme.taglist_bg_empty    = theme.catpuccin.surface0
+theme.taglist_bg_empty    = theme.catpuccin.surface1
 theme.taglist_bg_urgent    = theme.bg_urgent
 theme.taglist_bg_focus    = theme.catpuccin.sapphire
 
 theme.tasklist_fg_focus    = theme.catpuccin.crust
-theme.tasklist_bg_minimize    = theme.catpuccin.surface0
-theme.tasklist_bg_normal    = theme.catpuccin.surface0
+theme.tasklist_bg_minimize    = theme.wibar_widget_background
+theme.tasklist_bg_normal    = theme.wibar_widget_background
 theme.tasklist_bg_urgent    = theme.bg_urgent
 
 theme.tasklist_shape_border_color = theme.themeColor
@@ -68,7 +73,7 @@ theme.tasklist_shape_border_width_minimized = 0
 theme.taglist_shape_border_width = 6
 theme.taglist_shape_border_width_empty = 5
 theme.taglist_shape_border_width_focus = 3
-theme.taglist_shape_border_color = theme.bg_normal
+theme.taglist_shape_border_color = theme.catpuccin.base
 
 
 theme.tasklist_fg_focus = theme.catpuccin.crust

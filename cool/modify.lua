@@ -57,8 +57,10 @@ end
 
 local batteryBarColor = nil
 
-local batteryWarning = 25
+local batteryWarning = 20
 local batteryWarningCritical = 15
+
+local BatWarning = {}
 
 Cool.updateBattery = function()
     awful.spawn.easy_async_with_shell(
@@ -68,14 +70,24 @@ Cool.updateBattery = function()
 			-- widgets.batteryIcon.forced_height = tonumber(string.sub(stdout, -5, -3)) * 0.215
             -- naughty.notify{text=stdout}
 			if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical) and (string.find(stdout,"discharging"))then
-				naughty.notify { title="BATTERY IS BELOW "..batteryWarningCritical.."%", text = "better plug it in fast", preset = naughty.config.presets.critical, timeout=20}
+				BatWarning=naughty.notify { 
+					title="BATTERY IS JUST "..widgets.batteryText.text,
+					text = "better plug it in fast",
+					preset = naughty.config.presets.critical,
+					timeout=0,
+					replaces_id = BatWarning.id,
+				}
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.red,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.red
 				widgets.batteryCase.border_color=beautiful.catpuccin.red
 
 			elseif (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) and (string.find(stdout,"discharging")) then
-				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=20 }
-				naughty.notify { title="BATTERY IS BELOW "..batteryWarning.."%", text = "better plug it in", timeout=20 }
+				BatWarning=naughty.notify { 
+					title="BATTERY IS JUST "..widgets.batteryText.text,
+					text = "better plug it in",
+					timeout=20,
+					replaces_id = BatWarning.id,
+				}
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.yellow,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.yellow
 				widgets.batteryCase.border_color=beautiful.catpuccin.yellow

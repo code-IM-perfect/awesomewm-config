@@ -1,6 +1,7 @@
 local awful = require 'awful'
 require 'awful.autofocus'
 local wibox = require 'wibox'
+local gears = require 'gears'
 
 client.connect_signal('mouse::enter', function(c)
    c:activate { context = 'mouse_enter', raise = false }
@@ -53,4 +54,12 @@ client.connect_signal('request::titlebars', function(c)
       },
       layout = wibox.layout.align.horizontal,
    }
+end)
+
+
+---- Rounding the bars
+client.connect_signal("manage", function (c)
+   c.shape = function(cr,w,h)
+       gears.shape.rounded_rect(cr,w,h,13)
+   end
 end)
