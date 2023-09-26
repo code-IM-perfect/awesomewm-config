@@ -294,7 +294,14 @@ function _M.create_wibox(s)
 			{
 				layout = wibox.layout.fixed.horizontal,
 				-- _M.launcher,
-				s.taglist,
+				{
+					s.taglist,
+					widget=wibox.container.background,
+					bg = beautiful.catpuccin.base,
+					shape = function (cr, width, height, _)
+						gears.shape.rounded_rect(cr,width,height,height/4)
+					end
+				},
 				s.promptbox,
 				create.widgetSpacer(10),
 			},
