@@ -59,6 +59,7 @@ local batteryBarColor = nil
 
 local batteryWarning = 20
 local batteryWarningCritical = 15
+local batteryAlmostFull = 96
 
 local BatWarning = {}
 
@@ -82,7 +83,7 @@ Cool.updateBattery = function()
 				widgets.batteryCase.border_color=beautiful.catpuccin.red
 
 			elseif (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) and (string.find(stdout,"discharging")) then
-				BatWarning=naughty.notify { 
+				BatWarning=naughty.notify {
 					title="BATTERY IS JUST "..widgets.batteryText.text,
 					text = "better plug it in",
 					timeout=20,
@@ -101,6 +102,12 @@ Cool.updateBattery = function()
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.green,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.green
 				widgets.batteryCase.border_color=beautiful.catpuccin.green
+				if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) then
+					BatWarning=naughty.notify {
+						title="Battery is almost full ("..widgets.batteryText.text..")",
+						replaces_id = BatWarning.id,
+					}
+				end
 			end
                -- if tonumber(string.sub(stdout, -5, -3)) < 11 then
                --     awful.spawn.with_shell("systemctl hibernate")
