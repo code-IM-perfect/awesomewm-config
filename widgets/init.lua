@@ -217,16 +217,16 @@ function _M.create_taglist(s)
 					end
 				end
 			},
-			awful.button {
-				modifiers = {},
-				button    = 4,
-				on_press  = function(t) awful.tag.viewprev(t.screen) end,
-			},
-			awful.button {
-				modifiers = {},
-				button    = 5,
-				on_press  = function(t) awful.tag.viewnext(t.screen) end,
-			},
+			-- awful.button {
+			-- 	modifiers = {},
+			-- 	button    = 4,
+			-- 	on_press  = function(t) awful.tag.viewprev(t.screen) end,
+			-- },
+			-- awful.button {
+			-- 	modifiers = {},
+			-- 	button    = 5,
+			-- 	on_press  = function(t) awful.tag.viewnext(t.screen) end,
+			-- },
 		},
 		style = {
 			shape = gears.shape.rounded_rect,
