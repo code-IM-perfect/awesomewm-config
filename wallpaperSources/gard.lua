@@ -1,0 +1,15 @@
+return {
+    "~/Harshit_Work/Funny_Stuff/z_MightyHarvest",
+    "~/Harshit_Work/Funny_Stuff/z_terrariums",
+    "~/Harshit_Work/Funny_Stuff/z_IndoorGarden",
+    "~/Harshit_Work/Funny_Stuff/z_gardening",
+    "~/Harshit_Work/Funny_Stuff/z_houseplants",
+    "~/Harshit_Work/Funny_Stuff/z_SavageGarden",
+    "~/Harshit_Work/Funny_Stuff/z_succulents",
+    "~/Harshit_Work/Funny_Stuff/z_plantclinic",
+    "~/Harshit_Work/Funny_Stuff/z_vegetablegardening",
+    "~/Harshit_Work/Funny_Stuff/z_whatsthisplant",
+    "~/Harshit_Work/Funny_Stuff/z_whatsthisplant",
+    "~/Harshit_Work/Funny_Stuff/z_airplants",
+    "~/Harshit_Work/Funny_Stuff/z_Bonsai",
+}
