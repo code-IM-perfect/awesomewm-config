@@ -120,6 +120,7 @@ theme.menu_width            = dpi(100)
 
 
 theme.wallpaper  = "/home/harshit/.config/awesome/theme/arch-black-4k.png"
+-- theme.wallpaper  = "/home/harshit/Harshit_Work/kevin-kruger-B1DbAp0viKw-unsplash.jpg"
 -- theme.wallpaper                                 = themes_path .. "default/background.png"
 -- theme.wallpaper                                 = "~/.config/awesome/theme/Windows crash error [1920x1080].png"
 
