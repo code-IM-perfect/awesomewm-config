@@ -31,8 +31,34 @@ local create        = require("cool.create")
 --    menu = _M.mainmenu
 -- }
 
+_M.textTime = wibox.container.place({
+	widget = wibox.widget.textclock,
+	format = "%l:%M %P",
+})
+
+_M.textDate = wibox.container.place({
+	widget = wibox.widget.textclock,
+	format = "%e %b %Y",
+	font = "Sans 8"
+})
+
 _M.keyboardlayout = awful.widget.keyboardlayout()
-_M.textclock      = wibox.widget.background(wibox.container.margin(wibox.widget.textclock("%a | %e %b %Y |%l:%M %P"),7,7))
+-- _M.textclock      = wibox.widget.background(wibox.container.margin(wibox.widget.textclock("%a | %e %b %Y |%l:%M %P"),7,7))
+_M.textclock      = {
+		widget = wibox.widget.background,
+		wibox.container.margin({
+		layout = wibox.layout.align.vertical,
+		_M.textTime,
+		_M.textDate,
+	},7,7),
+	buttons = {
+		awful.button {
+			modifiers = {},
+			button    = 1,
+			on_press  = function() _M.textDate.visible = not(_M.textDate.visible) end,
+		},
+	}
+	}
 _M.textclock.bg = beautiful.catpuccin.surface0
 _M.textclock.shape = function (cr, width, height, _)
 	gears.shape.rounded_rect(cr,width,height,height/4)
