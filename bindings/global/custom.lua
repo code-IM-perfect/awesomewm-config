@@ -48,7 +48,7 @@ awful.keyboard.append_global_keybindings {
 		key         = 'e',
 		description = 'Open Dolphin',
 		group       = 'applications',
-		on_press    = function() awful.spawn("dolphin") end,
+		on_press    = function() awful.spawn.with_shell("dolphin") end,
 	},
 
 	awful.key {
