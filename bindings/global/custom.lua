@@ -5,6 +5,17 @@ local mod = require 'bindings.mod'
 local modify = require 'cool.modify'
 -- local widgets = require 'widgets'
 
+local wall_src = {
+	all = require 'wallpaperSources.all',
+	astro = require 'wallpaperSources.astro',
+	calvin = require 'wallpaperSources.calvin',
+	cats = require 'wallpaperSources.cats',
+	cool = require 'wallpaperSources.cool',
+	gard = require 'wallpaperSources.gard',
+	redd = require 'wallpaperSources.redd',
+	windoze = require 'wallpaperSources.windoze',
+}
+
 local terminal = require'config.apps'.terminal
 
 
@@ -300,6 +311,19 @@ awful.keyboard.append_global_keybindings {
 	-- 	end,
 	-- },
 
+}
+
+-- Wallpaper Changing
+awful.keyboard.append_global_keybindings {
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Begin',
+		description = "Set a wallpaper from all",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.all)
+		end
+	}
 }
 
 
