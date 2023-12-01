@@ -13,6 +13,7 @@ Cool.updateVolume = function()
 	awful.spawn.easy_async("wpctl get-volume @DEFAULT_AUDIO_SINK@",
 		function(stdout, _, _, _)
 			local vol_float = string.sub(stdout, 9, 12)
+			-- local vol_float = 2                 -- Switch
 			Cool.volume = math.floor(vol_float * 100)
 			local cat = nil
 			if string.find(stdout, "MUTED")
