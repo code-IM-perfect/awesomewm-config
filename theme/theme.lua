@@ -17,10 +17,27 @@ local theme               = {}
 
 theme.catpuccin           = require("colors.catpuccin")
 
-theme.catpuccin.text = "#e9edfb"
+-- Better white
 -- theme.catpuccin.text = "#ffffff"
+-- theme.catpuccin.text = "#e9edfb"  -- default made better
 
-theme.themeColor          = theme.catpuccin.sapphire
+
+---- MAUVE
+theme.catpuccin.text = "#f1e9fb"
+theme.catpuccin.subtext1 = "#c9b8e0"
+theme.catpuccin.subtext0 = "#b6a5cb"
+
+theme.catpuccin.overlay2 = "#a593b7"
+theme.catpuccin.overlay1 = "#9180a2"
+theme.catpuccin.overlay0 = "#7f6e8d"
+theme.catpuccin.surface2 = "#695b78"
+theme.catpuccin.surface1 = "#564964"
+theme.catpuccin.surface0 = "#41364f"
+theme.catpuccin.base = "#2f243a"
+theme.catpuccin.mantle = "#271e30"
+theme.catpuccin.crust = "#1e1826"
+
+theme.themeColor          = theme.catpuccin.mauve
 
 -- local tokyoNight = require("colors.tokyoNight")
 -- local brightColors = require("colors.tokyoNightColors")
@@ -50,10 +67,10 @@ theme.border_color_marked = "#91231c"
 theme.taglist_fg_focus    = theme.catpuccin.crust
 theme.taglist_fg_occupied    = theme.catpuccin.crust
 -- theme.taglist_bg_occupied    = theme.catpuccin.surface0
-theme.taglist_bg_occupied    = theme.catpuccin.yellow
+theme.taglist_bg_occupied    = theme.catpuccin.green
 theme.taglist_bg_empty    = theme.catpuccin.surface1
 theme.taglist_bg_urgent    = theme.bg_urgent
-theme.taglist_bg_focus    = theme.catpuccin.sapphire
+theme.taglist_bg_focus    = theme.themeColor
 
 theme.tasklist_fg_focus    = theme.catpuccin.crust
 theme.tasklist_bg_minimize    = theme.wibar_widget_background
