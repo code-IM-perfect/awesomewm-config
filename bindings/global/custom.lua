@@ -144,6 +144,7 @@ awful.keyboard.append_client_keybindings{
 		group       = 'system',
 		on_press    = function()
 			modify.brightness("+5%")
+			-- naughty.notify{text="yo"}
 		end,
 	},
 	awful.key {
