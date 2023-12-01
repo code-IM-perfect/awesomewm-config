@@ -103,10 +103,11 @@ Cool.updateBattery = function()
 				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.green,beautiful.catpuccin.surface0)
 				widgets.batteryCap.bg=beautiful.catpuccin.green
 				widgets.batteryCase.border_color=beautiful.catpuccin.green
-				if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) then
+				if (tonumber(string.sub(stdout, -5, -3)) >= batteryAlmostFull) then
 					BatWarning=naughty.notify {
 						title="Battery is almost full ("..widgets.batteryText.text..")",
 						replaces_id = BatWarning.id,
+						timeout=40
 					}
 				end
 			end
