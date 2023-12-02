@@ -141,7 +141,7 @@ widgets.volumeBox.buttons = gears.table.join(
 
 Cool.changeWallpaper = function (inputTable)
 	awful.spawn.easy_async_with_shell("~/.config/awesome/wallpaperSources/fileget/fileget "..table.concat(inputTable," "), function (wallFile, _, _, _)
-		-- gears.wallpaper.fit(wallFile)
+		gears.wallpaper.fit(wallFile:gsub("\n",""))
 		naughty.notify({text=wallFile})
 	end)
 end
