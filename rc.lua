@@ -21,6 +21,7 @@ require 'signals'
 require 'timers'
 
 -- require 'naughty'.notify { text = require 'gears'.filesystem.get_configuration_dir() }
+require'cool.modify'.setWallpaper(require'cool.modify'.active_wallp)
 
 require 'cool.modify'.updateVolume()
 
