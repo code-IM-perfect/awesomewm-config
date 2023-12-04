@@ -323,7 +323,16 @@ awful.keyboard.append_global_keybindings {
 		on_press = function ()
 			modify.changeWallpaper(wall_src.all)
 		end
-	}
+	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Down',
+		description = "Set previous wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper("prev")
+		end
+	},
 }
 
 
