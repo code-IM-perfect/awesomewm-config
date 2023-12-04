@@ -171,6 +171,26 @@ Cool.changeWallpaper = function (inputTable)
 		end
 	end
 end
+
+Cool.wallpaperInfo = function()
+	local file = Cool.active_wallp:gsub("/home/harshit/Harshit_Work/Funny_Stuff/", ""):gsub("/home/harshit/Harshit_Work/", "")
+	local sub = file:sub(1, file:find("/") - 1):gsub("z_", "r/")
+	local post = file:sub(file:find("/") + 1, -5)
+	bilkul = naughty.notify{
+		title = sub,
+		text = post,
+		timeout = 10,
+		hover_timeout = 30,
+		position = "bottom_left",
+		border_width = 3,
+		border_color = beautiful.themeColor,
+		bg = beautiful.catpuccin.mantle,
+		fg = beautiful.catpuccin.text,
+		font = "SF-Pro",
+		margin = 15,
+		replaces_id = bilkul.id,
+		max_width = 500,
+	}
 end
 
 return Cool
