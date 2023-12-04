@@ -160,7 +160,7 @@ Cool.changeWallpaper = function (inputTable)
 		Cool.setWallpaper(Cool.active_wallp)
 	else
 		if wallOffset==0 then
-	awful.spawn.easy_async_with_shell("~/.config/awesome/wallpaperSources/fileget/fileget "..table.concat(inputTable," "), function (wallFile, _, _, _)
+			awful.spawn.easy_async_with_shell("~/.config/awesome/wallpaperSources/fileget/fileget "..table.concat(inputTable," "), function (wallFile, _, _, _)
 				Cool.active_wallp = wallFile:gsub("\n","")
 				Cool.setWallpaper(Cool.active_wallp)
 			end)
