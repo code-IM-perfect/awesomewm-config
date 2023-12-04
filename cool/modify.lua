@@ -139,11 +139,32 @@ widgets.volumeBox.buttons = gears.table.join(
 	awful.button({}, 4, function() Cool.change_vol("2%+") end),
 	awful.button({}, 5, function() Cool.change_vol("2%-") end))
 
+Cool.setWallpaper = function (file,adjustment)
+	if adjustment=="fill" then
+		gears.wallpaper.maximized(file)
+	else
+		gears.wallpaper.fit(file)
+	end
+	Cool.wallpaperInfo()
+end
 Cool.changeWallpaper = function (inputTable)
+	if inputTable == "prev" then
+		wallOffset=wallOffset+1
+		Cool.active_wallp=dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')[#dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')-wallOffset]
+		Cool.setWallpaper(Cool.active_wallp)
+	else
+		if wallOffset==0 then
 	awful.spawn.easy_async_with_shell("~/.config/awesome/wallpaperSources/fileget/fileget "..table.concat(inputTable," "), function (wallFile, _, _, _)
-		gears.wallpaper.fit(wallFile:gsub("\n",""))
-		naughty.notify({text=wallFile})
-	end)
+				Cool.active_wallp = wallFile:gsub("\n","")
+				Cool.setWallpaper(Cool.active_wallp)
+			end)
+		else
+			wallOffset=wallOffset-1
+			Cool.active_wallp = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')[#dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')-wallOffset]
+			Cool.setWallpaper(Cool.active_wallp)
+		end
+	end
+end
 end
 
 return Cool
