@@ -7,7 +7,6 @@ pcall(require, 'luarocks.loader')
 local beautiful = require 'beautiful'
 local gears = require 'gears'
 -- local awful = require 'awful'
-local modify = require'cool.modify'
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme.lua")
 
 -- load key and mouse bindings
@@ -21,6 +20,7 @@ require 'signals'
 
 require 'timers'
 
+local modify = require'cool.modify'
 -- require 'naughty'.notify { text = require 'gears'.filesystem.get_configuration_dir() }
 modify.changeWallpaper("current")
 
