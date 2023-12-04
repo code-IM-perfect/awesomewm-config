@@ -11,6 +11,7 @@ local wall_src = {
 	calvin = require 'wallpaperSources.calvin',
 	cats = require 'wallpaperSources.cats',
 	cool = require 'wallpaperSources.cool',
+	find = require 'wallpaperSources.find',
 	gard = require 'wallpaperSources.gard',
 	redd = require 'wallpaperSources.redd',
 	windoze = require 'wallpaperSources.windoze',
