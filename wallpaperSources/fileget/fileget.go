@@ -11,8 +11,6 @@ import (
 	"time"
 )
 
-// accepted extensions
-
 // func visit(path string, di fs.DirEntry, err error) error {
 // 	fmt.Printf("Visited: %s\n", path)
 // 	return nil
@@ -29,6 +27,7 @@ func addToList(path string, di fs.DirEntry, err error) error {
 }
 
 func main() {
+	// accepted extensions
 	Extensions = []string{"png", "jpg", "jpeg"}
 
 	source := rand.NewSource(time.Now().UnixNano())
@@ -42,8 +41,20 @@ func main() {
 		// fmt.Printf("yooo added %v\n", directory)
 	}
 
+	selectedFile := FileList[random.Intn(len(FileList))]
 	// fmt.Println("The Selected File is-")
-	fmt.Printf(FileList[random.Intn(len(FileList))])
+	fmt.Print(selectedFile)
+
+	file, err := os.OpenFile("/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua", os.O_WRONLY, os.ModeAppend)
+	if err != nil {
+		fmt.Printf("There was a problem opening history.lua-\n%v", err)
+	}
+	file.Seek(-1, 2) // offset -1 from the end
+	_, err = file.WriteString(fmt.Sprintf("\"%v\",\n}", selectedFile))
+	if err != nil {
+		fmt.Printf("There was a problem writing to history.lua-\n%v", err)
+	}
+	file.Close()
 
 	// fmt.Println(FileList)
 
