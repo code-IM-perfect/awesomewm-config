@@ -334,6 +334,15 @@ awful.keyboard.append_global_keybindings {
 			modify.changeWallpaper("prev")
 		end
 	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Insert',
+		description = "Set Current wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper("current")
+		end
+	},
 }
 
 
