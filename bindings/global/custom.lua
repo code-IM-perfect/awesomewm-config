@@ -343,6 +343,60 @@ awful.keyboard.append_global_keybindings {
 			modify.changeWallpaper("current")
 		end
 	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Up',
+		description = "Set a cat wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.cats)
+		end
+	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Home',
+		description = "Set an astro wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.astro)
+		end
+	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Prior',
+		description = "Set a Calvin&Hobbes wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.calvin)
+		end
+	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Left',
+		description = "Set a redd wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.redd)
+		end
+	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_Right',
+		description = "Set a cool wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.cool)
+		end
+	},
+	awful.key {
+		modifiers = {mod.super, mod.ctrl},
+		key = 'KP_End',
+		description = "Set a windoze wallpaper",
+		group = "wallpaper",
+		on_press = function ()
+			modify.changeWallpaper(wall_src.windoze)
+		end
+	},
 }
 
 
