@@ -127,7 +127,6 @@ _M.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,1,beautiful.fg_normal,bea
 
 _M.volume_text = wibox.widget.textbox("69%")
 _M.volume_icon = wibox.widget.imagebox(gears.surface.load_uncached(beautiful.icon.mutedCat))
--- _M.volume_icon = wibox.widget.imagebox()
 local volboxInternalMargin = 5
 _M.volumeBox = wibox.container.background(
 	{
