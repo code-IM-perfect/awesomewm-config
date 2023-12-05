@@ -102,4 +102,8 @@ return {
 "/home/harshit/Harshit_Work/Astrophotography/The Carina Nebula from the ground.jpg",
 "/home/harshit/Harshit_Work/Funny_Stuff/z_astrophotography/Orion belt, 1 hour and 30mins.jpg",
 "/home/harshit/Harshit_Work/Astrophotography/Selected/Hubble's View of Jupiter and Europa in August 2020.jpg",
+"/home/harshit/Harshit_Work/Funny_Stuff/z_kittens/Oh to be two kittens kissing on a broom.jpg",
+"/home/harshit/Harshit_Work/Funny_Stuff/z_CatsCalledFood/Meet Mr.Butterball Turkey.jpg",
+"/home/harshit/Harshit_Work/Funny_Stuff/z_CatTrap/Trapped this sexy beast..jpg",
+"/home/harshit/Harshit_Work/Funny_Stuff/z_Kitten/A flat cat on her back....jpg",
 }
