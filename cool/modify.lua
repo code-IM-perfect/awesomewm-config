@@ -135,9 +135,11 @@ Cool.brightness = function (val)
 end
 
 widgets.volumeBox.buttons = gears.table.join(
-	awful.button({}, 1, function() Cool.toggle_mute() end),
-	awful.button({}, 4, function() Cool.change_vol("2%+") end),
-	awful.button({}, 5, function() Cool.change_vol("2%-") end))
+	awful.button({}, 1, function() Cool.toggle_mute() end),			-- Left Click
+	awful.button({}, 4, function() Cool.change_vol("2%+") end),		-- Scroll Up
+	awful.button({}, 5, function() Cool.change_vol("2%-") end),		-- Scroll Down
+	awful.button({}, 2, function() awful.spawn.with_shell("kcmshell5 kcm_pulseaudio") end)	-- Middle Click
+)
 
 Cool.setWallpaper = function (file,adjustment)
 	if adjustment=="fill" then
