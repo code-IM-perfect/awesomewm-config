@@ -136,7 +136,7 @@ _M.volumeBox = wibox.container.background(
 				widget = wibox.container.margin,
 				margins = 4,
 			},
-			create.widgetSpacer2,
+			create.widgetSpacer(2),
 			_M.volume_text,
 			layout = wibox.layout.fixed.horizontal,
 		},
