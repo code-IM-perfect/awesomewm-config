@@ -151,14 +151,20 @@ Cool.setWallpaper = function (file,adjustment)
 end
 
 local wallOffset = 0
+local k
 -- local active_wallp
-Cool.active_wallp = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')[#dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')]
 -- gears.wallpaper.fit(Cool.active_wallp)
 
 Cool.changeWallpaper = function (inputTable)
 	if inputTable == "prev" then
 		wallOffset=wallOffset+1
-		Cool.active_wallp=dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')[#dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')-wallOffset]
+		k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+		Cool.active_wallp=k[#k-wallOffset]
+		Cool.setWallpaper(Cool.active_wallp)
+	elseif inputTable == "current" then
+		wallOffset=0
+		k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+		Cool.active_wallp = k[#k]
 		Cool.setWallpaper(Cool.active_wallp)
 	else
 		if wallOffset==0 then
@@ -168,7 +174,8 @@ Cool.changeWallpaper = function (inputTable)
 			end)
 		else
 			wallOffset=wallOffset-1
-			Cool.active_wallp = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')[#dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')-wallOffset]
+			k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+			Cool.active_wallp = k[#k-wallOffset]
 			Cool.setWallpaper(Cool.active_wallp)
 		end
 	end
