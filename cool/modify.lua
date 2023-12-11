@@ -141,6 +141,11 @@ widgets.volumeBox.buttons = gears.table.join(
 	awful.button({}, 2, function() awful.spawn.with_shell("kcmshell5 kcm_pulseaudio") end)	-- Middle Click
 )
 
+widgets.bluetoothBox.buttons = gears.table.join(
+	awful.button({}, 3, function() Cool.updateBluetooth() naughty.notify{title = "Updated Bluetooth Widget"} end),			-- Right Click
+	awful.button({}, 2, function() awful.spawn.with_shell("kcmshell5 kcm_bluetooth") end)	-- Middle Click
+)
+
 Cool.setWallpaper = function (file,adjustment)
 	if adjustment=="fill" then
 		gears.wallpaper.maximized(file)
