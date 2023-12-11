@@ -106,4 +106,5 @@ return {
 "/home/harshit/Harshit_Work/Funny_Stuff/z_CatsCalledFood/Meet Mr.Butterball Turkey.jpg",
 "/home/harshit/Harshit_Work/Funny_Stuff/z_CatTrap/Trapped this sexy beast..jpg",
 "/home/harshit/Harshit_Work/Funny_Stuff/z_Kitten/A flat cat on her back....jpg",
+"/home/harshit/Harshit_Work/Funny_Stuff/z_politecats/Lilly Belle politely watching television..jpg",
 }
