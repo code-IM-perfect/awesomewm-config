@@ -15,6 +15,24 @@ local config              = '/home/harshit/.config/awesome/'
 
 local theme               = {}
 
+theme.icon = {
+	mutedCat = config .. "icons/vol/1.svg",
+	volCat2 = config .. "icons/vol/2.svg",
+	volCat3 = config .. "icons/vol/3.svg",
+	volCat4 = config .. "icons/vol/4.svg",
+	volCat5 = config .. "icons/vol/5.svg",
+	volCat6 = config .. "icons/vol/6.svg",
+
+	bluetoothInactive = config .. "icons/bt/inactive.svg",
+	-- bluetoothInactive = config .. "icons/bt/updating.svg",
+
+	buds = config .. "icons/bt/devices/buds.svg",
+	headphones = config .. "icons/bt/devices/headphones.svg",
+	speaker = config .. "icons/bt/devices/speaker.svg",
+	generalBluetooth = config .. "icons/bt/devices/genral.svg",
+}
+
+
 theme.catpuccin           = require("colors.catpuccin")
 
 -- Better white
@@ -38,6 +56,7 @@ theme.catpuccin.mantle = "#271e30"
 theme.catpuccin.crust = "#1e1826"
 
 theme.themeColor          = theme.catpuccin.mauve
+theme.icon.bluetoothActive = config .. "icons/bt/active_mauve.svg"
 
 -- local tokyoNight = require("colors.tokyoNight")
 -- local brightColors = require("colors.tokyoNightColors")
@@ -176,14 +195,7 @@ theme.wibar_height = dpi(37)
 
 
 
-theme.icon = {
-	mutedCat = config .. "icons/vol/1.svg",
-	volCat2 = config .. "icons/vol/2.svg",
-	volCat3 = config .. "icons/vol/3.svg",
-	volCat4 = config .. "icons/vol/4.svg",
-	volCat5 = config .. "icons/vol/5.svg",
-	volCat6 = config .. "icons/vol/6.svg",
-}
+
 
 
 
