@@ -19,3 +19,6 @@ gears.timer {
 		modify.updateVolume()
 	end
 }
+
+
+---- NOTE: bluetooth timer in cool.modify
