@@ -26,4 +26,4 @@ modify.changeWallpaper("current")
 
 modify.updateVolume()
 
-require'autostart'
+require 'autostart'
