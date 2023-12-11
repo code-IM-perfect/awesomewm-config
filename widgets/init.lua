@@ -153,6 +153,34 @@ end
 
 
 
+---------- B L U E T O O T H ------------
+_M.bluetoothTray = wibox.layout.fixed.horizontal()
+_M.bluetoothIcon = wibox.widget.imagebox(gears.surface.load_uncached(beautiful.icon.bluetoothActive))
+_M.bt_tray_separator = wibox.widget.textbox(" | ")
+_M.bt_tray_separator.visible = false
+
+local blueboxInternalMargin = 5
+_M.bluetoothBox = wibox.container.background({
+	{
+		{
+			_M.bluetoothIcon,
+			widget = wibox.container.margin,
+			margins = 5,
+		},
+		_M.bt_tray_separator,
+		_M.bluetoothTray,
+		layout = wibox.layout.fixed.horizontal,
+	},
+	widget=wibox.container.margin,
+	left=blueboxInternalMargin,
+	right=blueboxInternalMargin,
+})
+_M.bluetoothBox.bg = beautiful.catpuccin.surface0
+_M.bluetoothBox.shape = function (cr, width, height, _)
+	gears.shape.rounded_rect(cr,width,height,height/4)
+end
+
+
 function _M.create_promptbox() return awful.widget.prompt() end
 
 function _M.create_layoutbox(s)
@@ -350,6 +378,8 @@ function _M.create_wibox(s)
 						gears.shape.rounded_rect(cr,width,height,height/4)
 					end
 				},
+				create.widgetSpacer(6),
+				_M.bluetoothBox,
 				create.widgetSpacer(6),
 				_M.volumeBox,
 				create.widgetSpacer(6),
