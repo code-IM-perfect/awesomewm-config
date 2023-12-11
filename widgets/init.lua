@@ -352,24 +352,6 @@ function _M.create_wibox(s)
 				},
 				create.widgetSpacer(6),
 				_M.volumeBox,
-				-- {
-				-- 	{
-				-- 		_M.batteryIcon,
-				-- 		create.widgetSpacer(5),
-				-- 		_M.batteryText,
-				-- 		layout = wibox.layout.fixed.horizontal,
-				-- 	},
-				-- 	widget = wibox.container.background,
-				-- 	-- bg =  gears.color.create_linear_pattern("0,0:0,35:0,#FF0000:0.499900,#FF0000:0.500000,#0000FF"),
-				-- 	bg =  create.twoSolidColors(0,0,0,35,0.5,beautiful.catpuccin.red,beautiful.catpuccin.green),
-				-- 	-- bg={
-				-- 	--    type = 'linear',
-				-- 	--    from = {0,0},
-				-- 	--    to = {10,10},
-				-- 	--    stops = {{0,"#FFFFFF",{0.5,"#00FF00"},{1,"#0000FF"}}}
-				-- 	-- },
-				-- 	fg="#000000",
-				-- },
 				create.widgetSpacer(6),
 				_M.batteryContainer,
 				create.widgetSpacer(6),
