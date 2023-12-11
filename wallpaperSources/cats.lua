@@ -1,11 +1,11 @@
 return {
-    "~/Harshit_Work/Funny_Stuff/Cats",
+    "~/Harshit_Work/Funny_Stuff/Cats", ---
     "~/Harshit_Work/Funny_Stuff/z_AbsoluteUnits",
     "~/Harshit_Work/Funny_Stuff/z_airplaneears",
     "~/Harshit_Work/Funny_Stuff/z_AnimalsBeingConfused",
-    "~/Harshit_Work/Funny_Stuff/z_aww",
+    "~/Harshit_Work/Funny_Stuff/z_aww", ----
     "~/Harshit_Work/Funny_Stuff/z_bengalcats",
-    "~/Harshit_Work/Funny_Stuff/z_blackcats",
+    "~/Harshit_Work/Funny_Stuff/z_blackcats", ---
     "~/Harshit_Work/Funny_Stuff/z_Bondedpairs",
     "~/Harshit_Work/Funny_Stuff/z_catbongos",
     "~/Harshit_Work/Funny_Stuff/z_Catculations",
@@ -20,7 +20,7 @@ return {
     "~/Harshit_Work/Funny_Stuff/z_catsareliquid",
     "~/Harshit_Work/Funny_Stuff/z_CatsBeingCats",
     "~/Harshit_Work/Funny_Stuff/z_catbellies",
-    "~/Harshit_Work/Funny_Stuff/z_CatsCalledFood",
+    "~/Harshit_Work/Funny_Stuff/z_CatsCalledFood", ---
     "~/Harshit_Work/Funny_Stuff/z_catscarryingstuffies",
     "~/Harshit_Work/Funny_Stuff/z_CatsPlayingDnd",
     "~/Harshit_Work/Funny_Stuff/z_Catspotting",
