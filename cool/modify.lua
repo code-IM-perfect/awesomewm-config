@@ -266,4 +266,13 @@ Cool.updateBluetooth = function ()
 		end)
 end
 
+Cool.bluetoothUpdateTimer = gears.timer {
+	timeout = 30,
+	autostart = true,
+	call_now = true,
+	callback = function ()
+		Cool.updateBluetooth()
+	end
+}
+
 return Cool
