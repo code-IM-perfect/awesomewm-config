@@ -207,4 +207,63 @@ Cool.wallpaperInfo = function()
 	}
 end
 
+local connected_devices
+local prev_bt_output
+local bt_dekhu
+
+Cool.updateBluetooth = function ()
+	awful.spawn.easy_async_with_shell("bluetoothctl devices Connected",
+		function(stdout, _, _, _)
+			if stdout ~= prev_bt_output then
+				widgets.bluetoothTray:reset()
+				local yo = gears.string.split(stdout, "\n")
+				table.remove(yo) -- Remove empty string at the end
+				connected_devices = {}
+				for _, device_info in pairs(yo) do
+					local device = {
+						name = string.sub(device_info, 26),
+						address = string.sub(device_info, 8, 24)
+					}
+					-- naughty.notify{
+					-- 	text=device.name.." ("..device.address..")"
+					-- }
+					local img
+					if string.find(device.name, "bud") or string.find(device.name, "Bud") then
+						img = beautiful.icon.buds
+					elseif string.find(device.name, "pod") or string.find(device.name, "Pod") then
+						img = beautiful.icon.buds
+					elseif string.find(device.name, "rockerz") or string.find(device.name, "Rockerz") then
+						img = beautiful.icon.headphones
+					elseif string.find(device.name, "JBL GO") then
+						img = beautiful.icon.speaker
+					else
+						img = beautiful.icon.generalBluetooth
+					end
+					-- widgets.bluetoothTray:add(widgets.bluetoothTrayIcon(img))
+					widgets.bluetoothTray:add(create.bluetoothTrayIcon(img, 5))
+					table.insert(connected_devices, device)
+				end
+				if (#connected_devices > 0)
+				then
+					widgets.bluetoothIcon.image = gears.surface.load_uncached(beautiful.icon.bluetoothActive)
+					widgets.bt_tray_separator.visible = true
+					if bt_dekhu == false then
+						bt_dekhu = true
+						Cool.bluetoothUpdateTimer.timeout = 3
+						Cool.bluetoothUpdateTimer:again()
+					end
+				else
+					widgets.bluetoothIcon.image = gears.surface.load_uncached(beautiful.icon.bluetoothInactive)
+					widgets.bt_tray_separator.visible = false
+					if bt_dekhu == true then
+						bt_dekhu = false
+						Cool.bluetoothUpdateTimer.timeout = 30
+						Cool.bluetoothUpdateTimer:again()
+					end
+				end
+			end
+			prev_bt_output = stdout
+		end)
+end
+
 return Cool
