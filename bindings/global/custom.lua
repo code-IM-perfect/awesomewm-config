@@ -284,7 +284,7 @@ awful.keyboard.append_global_keybindings {
 	awful.key {
 		modifiers   = { mod.super, mod.shift },
 		key         = 'KP_Begin',
-		description = 'Decrease Client Gap',
+		description = 'Reset Client Gap',
 		group       = 'tag',
 		on_press    = function()
 			awful.screen.focused().selected_tag.gap = beautiful.useless_gap
