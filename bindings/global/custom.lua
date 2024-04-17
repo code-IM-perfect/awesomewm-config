@@ -276,13 +276,13 @@ awful.keyboard.append_global_keybindings {
 		on_press    = function() awful.spawn.with_shell("xset dpms force off; sleep 0.001; xset dpms force off") end,
 	},
 
-	-- awful.key {
-	-- 	modifiers   = { },
-	-- 	key         = '#248',
-	-- 	description = 'Take a Screenshot',
-	-- 	group       = 'launcher',
-	-- 	on_press    = function() awful.spawn("spectacle -r") end,
-	-- },
+	awful.key {
+		modifiers   = {},
+		key         = 'Print',
+		description = 'Take a Screenshot',
+		group       = 'launcher',
+		on_press    = function() awful.spawn("spectacle") end,
+	},
 }
 
 -- WM
