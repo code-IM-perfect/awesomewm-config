@@ -40,6 +40,14 @@ awful.keyboard.append_global_keybindings {
 	},
 
 	awful.key {
+		modifiers   = { mod.super, mod.shift, mod.ctrl },
+		key         = 'f',
+		description = 'Open Firefox Dev Edition Private Window',
+		group       = 'applications',
+		on_press    = function() awful.spawn("firefox -P nooooo --private-window") end,
+	},
+
+	awful.key {
 		modifiers   = { mod.super, mod.alt },
 		key         = 'f',
 		description = 'Open Firefox Private Window',
@@ -47,13 +55,13 @@ awful.keyboard.append_global_keybindings {
 		on_press    = function() awful.spawn("firefox --private-window") end,
 	},
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift },
-		key         = 'p',
-		description = 'Open Firefox Dev Edititon',
-		group       = 'applications',
-		on_press    = function() awful.spawn("firefox-developer-edition -P dev-ed-no --private-window") end,
-	},
+	-- awful.key {
+	-- 	modifiers   = { mod.super, mod.shift },
+	-- 	key         = 'p',
+	-- 	description = 'Open Firefox Dev Edititon',
+	-- 	group       = 'applications',
+	-- 	on_press    = function() awful.spawn("firefox-developer-edition -P dev-ed-no --private-window") end,
+	-- },
 
 	awful.key {
 		modifiers   = { mod.super },
