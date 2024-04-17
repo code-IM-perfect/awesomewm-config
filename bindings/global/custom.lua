@@ -429,6 +429,24 @@ awful.keyboard.append_global_keybindings {
 			modify.changeWallpaper(wall_src.find)
 		end
 	},
+	-- awful.key {
+	-- 	modifiers = { mod.super, mod.ctrl },
+	-- 	key = 'KP_End',
+	-- 	description = "Set a windoze wallpaper",
+	-- 	group = "wallpaper",
+	-- 	on_press = function()
+	-- 		modify.changeWallpaper(wall_src.windoze)
+	-- 	end
+	-- },
+	awful.key {
+		modifiers = { mod.super, mod.ctrl },
+		key = 'KP_Enter',
+		description = "Change wallpaper to fill",
+		group = "wallpaper",
+		on_press = function()
+			modify.changeWallpaper(nil, "toggleFitMode")
+		end
+	},
 	awful.key {
 		modifiers = {mod.super, mod.ctrl},
 		key = 'KP_End',
