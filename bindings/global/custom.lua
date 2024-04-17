@@ -247,7 +247,21 @@ awful.keyboard.append_global_keybindings {
 	},
 
 	awful.key {
-		modifiers   = {  },
+		modifiers   = { mod.super },
+		key         = 'v',
+		description = 'GreenClip (rofi clipboard manager)',
+		group       = 'launcher',
+		on_press    = function()
+			awful.spawn.with_shell(
+				"rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'")
+		end,
+	},
+
+
+	-- PowerButton
+
+	awful.key {
+		modifiers   = {},
 		key         = 'XF86PowerOff',
 		description = 'Rofi Powermenu',
 		group       = 'launcher',
