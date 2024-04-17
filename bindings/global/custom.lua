@@ -17,7 +17,7 @@ local wall_src = {
 	windoze = require 'wallpaperSources.windoze',
 }
 
-local terminal = require'config.apps'.terminal
+local terminal = require 'config.apps'.terminal
 
 
 -- launch apps
@@ -117,7 +117,7 @@ awful.keyboard.append_global_keybindings {
 		key         = 'b',
 		description = 'Open Bluetooth Settings',
 		group       = 'applications',
-		on_press    = function() awful.spawn("kcmshell5 kcm_bluetooth") end,
+		on_press    = function() awful.spawn("kcmshell6 kcm_bluetooth") end,
 	},
 
 	awful.key {
@@ -125,7 +125,7 @@ awful.keyboard.append_global_keybindings {
 		key         = 'w',
 		description = 'Open Network Settings',
 		group       = 'applications',
-		on_press    = function() awful.spawn("kcmshell5 kcm_networkmanagement") end,
+		on_press    = function() awful.spawn("kcmshell6 kcm_networkmanagement") end,
 	},
 
 	awful.key {
@@ -142,15 +142,15 @@ awful.keyboard.append_global_keybindings {
 		description = 'Save Posts',
 		group       = 'applications',
 		on_press    = function()
-			awful.spawn.with_shell(terminal.." -e python '/home/harshit/Harshit_Work/Funny_Stuff/Save_Posts.py'") --- gotta change this
+			awful.spawn.with_shell(terminal .. " -e python '/home/harshit/Harshit_Work/Funny_Stuff/Save_Posts.py'") --- gotta change this
 		end,
 	},
 }
 
 -- Brightness
-awful.keyboard.append_client_keybindings{
+awful.keyboard.append_client_keybindings {
 	awful.key {
-		modifiers   = {},
+		modifiers   = { mod.ctrl },
 		key         = 'XF86MonBrightnessUp',
 		description = 'Increase Brightness',
 		group       = 'system',
@@ -160,7 +160,7 @@ awful.keyboard.append_client_keybindings{
 		end,
 	},
 	awful.key {
-		modifiers   = {},
+		modifiers   = { mod.ctrl },
 		key         = 'XF86MonBrightnessDown',
 		description = 'Decrease Brightness',
 		group       = 'system',
@@ -169,7 +169,7 @@ awful.keyboard.append_client_keybindings{
 		end,
 	},
 	awful.key {
-		modifiers   = {mod.ctrl},
+		modifiers   = {},
 		key         = 'XF86MonBrightnessUp',
 		description = 'Increase Brightness 1%',
 		group       = 'system',
@@ -178,7 +178,7 @@ awful.keyboard.append_client_keybindings{
 		end,
 	},
 	awful.key {
-		modifiers   = {mod.ctrl},
+		modifiers   = {},
 		key         = 'XF86MonBrightnessDown',
 		description = 'Decrease Brightness 1%',
 		group       = 'system',
@@ -192,7 +192,10 @@ awful.keyboard.append_client_keybindings{
 -- Media Control
 awful.keyboard.append_global_keybindings {
 	awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
-	awful.key({mod.shift}, "XF86AudioPlay", function() awful.spawn.with_shell("playerctl -i Gwenview -p spotify,playerctld play-pause") end),
+	awful.key({ mod.shift }, "XF86AudioPlay", function()
+		awful.spawn.with_shell(
+			"playerctl -i Gwenview -p spotify,playerctld play-pause")
+	end),
 	awful.key({}, "XF86AudioPause", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
 	awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl -i Gwenview -p playerctld next", false) end),
 	awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end),
@@ -226,7 +229,10 @@ awful.keyboard.append_global_keybindings {
 		key         = 'r',
 		description = 'Rofi Launcher',
 		group       = 'launcher',
-		on_press    = function() awful.spawn("rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-6.rasi") end,
+		on_press    = function()
+			awful.spawn.with_shell(
+				"rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-6.rasi")
+		end,
 	},
 
 	awful.key {
@@ -234,7 +240,10 @@ awful.keyboard.append_global_keybindings {
 		key         = 'r',
 		description = 'Rofi Runner',
 		group       = 'launcher',
-		on_press    = function() awful.spawn("rofi -show run -theme ~/.config/rofi/launchers/type-1/style-6.rasi") end,
+		on_press    = function()
+			awful.spawn.with_shell(
+				"rofi -show run -theme ~/.config/rofi/launchers/type-1/style-6.rasi")
+		end,
 	},
 
 	awful.key {
@@ -317,92 +326,92 @@ awful.keyboard.append_global_keybindings {
 -- Wallpaper Changing
 awful.keyboard.append_global_keybindings {
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Begin',
 		description = "Set a wallpaper from all",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper(wall_src.all)
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Down',
 		description = "Set previous wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper("prev")
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Insert',
 		description = "Set Current wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper("current")
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Up',
 		description = "Set a cat wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper(wall_src.cats)
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Home',
 		description = "Set an astro wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper(wall_src.astro)
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Prior',
 		description = "Set a Calvin&Hobbes wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper(wall_src.calvin)
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Left',
 		description = "Set a redd wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper(wall_src.redd)
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_Right',
 		description = "Set a cool wallpaper",
 		group = "wallpaper",
-		on_press = function ()
-			modify.changeWallpaper(wall_src.cool)
+		on_press = function()
+			modify.changeWallpaper(wall_src.cool, "fill")
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
+		modifiers = { mod.super, mod.ctrl },
 		key = 'KP_End',
 		description = "Set a windoze wallpaper",
 		group = "wallpaper",
-		on_press = function ()
-			modify.changeWallpaper(wall_src.windoze)
+		on_press = function()
+			modify.changeWallpaper(wall_src.windoze, "fill")
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
-		key = 'KP_Begin',
+		modifiers = { mod.super, mod.ctrl },
+		key = 'KP_Next',
 		description = "Set a Find wallpaper",
 		group = "wallpaper",
-		on_press = function ()
+		on_press = function()
 			modify.changeWallpaper(wall_src.find)
 		end
 	},
