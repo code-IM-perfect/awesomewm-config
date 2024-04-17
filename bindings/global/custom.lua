@@ -448,12 +448,13 @@ awful.keyboard.append_global_keybindings {
 		end
 	},
 	awful.key {
-		modifiers = {mod.super, mod.ctrl},
-		key = 'KP_End',
-		description = "Set a windoze wallpaper",
+		modifiers = { mod.super, mod.alt },
+		key = 'KP_Add',
+		description = "Set as current wallpaper",
 		group = "wallpaper",
-		on_press = function ()
-			modify.changeWallpaper(wall_src.windoze)
+		on_press = function()
+			naughty.notify { text = "Set this as the current wallpaper" }
+			modify.setAsCurrentWallpaper()
 		end
 	},
 }
