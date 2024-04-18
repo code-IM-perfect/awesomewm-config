@@ -1,15 +1,15 @@
 ------------------------------------ Widget Manipulating Functions ------------------------------
-local Cool = {}
+local Cool                   = {}
 
-local beautiful = require("beautiful")
-local gears = require("gears")
-local awful = require("awful")
-local naughty = require("naughty")
-local create  = require("cool.create")
+local beautiful              = require("beautiful")
+local gears                  = require("gears")
+local awful                  = require("awful")
+local naughty                = require("naughty")
+local create                 = require("cool.create")
 
-local widgets = require("widgets")
+local widgets                = require("widgets")
 
-Cool.updateVolume = function()
+Cool.updateVolume            = function()
 	awful.spawn.easy_async("wpctl get-volume @DEFAULT_AUDIO_SINK@",
 		function(stdout, _, _, _)
 			local vol_float = string.sub(stdout, 9, 12)
@@ -46,82 +46,85 @@ Cool.updateVolume = function()
 		end)
 end
 
-Cool.change_vol = function(c)
+Cool.change_vol              = function(c)
 	awful.spawn.easy_async_with_shell("wpctl set-volume @DEFAULT_AUDIO_SINK@ " .. c, function()
 		Cool.updateVolume()
 	end)
 end
 
-Cool.toggle_mute = function()
+Cool.toggle_mute             = function()
 	awful.spawn.easy_async_with_shell("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", function() Cool.updateVolume() end)
 end
 
-local batteryBarColor = nil
+local batteryBarColor        = nil
 
-local batteryWarning = 20
-local batteryWarningCritical = 15
-local batteryAlmostFull = 96
+local batteryWarning         = 15
+local batteryWarningCritical = 10
+local batteryAlmostFull      = 97
 
-local BatWarning = {}
+local BatWarning             = {}
 
-Cool.updateBattery = function()
-    awful.spawn.easy_async_with_shell(
-        "upower -i $(upower -e | grep BAT) | grep --color=never -E 'state|to full|time to empty|percentage'",
-        function(stdout, _, _, _)
-            widgets.batteryText.text = tonumber(string.sub(stdout, -5, -3)) .. "%"
+Cool.updateBattery           = function()
+	awful.spawn.easy_async_with_shell(
+		"upower -i $(upower -e | grep BAT) | grep --color=never -E 'state|to full|time to empty|percentage'",
+		function(stdout, _, _, _)
+			widgets.batteryText.text = tonumber(string.sub(stdout, -5, -3)) .. "%"
 			-- widgets.batteryIcon.forced_height = tonumber(string.sub(stdout, -5, -3)) * 0.215
-            -- naughty.notify{text=stdout}
-			if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical) and (string.find(stdout,"discharging"))then
-				BatWarning=naughty.notify { 
-					title="BATTERY IS JUST "..widgets.batteryText.text,
+			-- naughty.notify{text=stdout}
+			if (tonumber(string.sub(stdout, -5, -3)) <= batteryWarningCritical) and (string.find(stdout, "discharging")) then
+				BatWarning = naughty.notify {
+					title = "BATTERY IS JUST " .. widgets.batteryText.text,
 					text = "better plug it in fast",
 					preset = naughty.config.presets.critical,
-					timeout=0,
+					timeout = 0,
 					replaces_id = BatWarning.id,
 				}
-				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.red,beautiful.catpuccin.surface0)
-				widgets.batteryCap.bg=beautiful.catpuccin.red
-				widgets.batteryCase.border_color=beautiful.catpuccin.red
-
-			elseif (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) and (string.find(stdout,"discharging")) then
-				BatWarning=naughty.notify {
-					title="BATTERY IS JUST "..widgets.batteryText.text,
+				widgets.batteryInnerBar.bg = create.twoSolidColors(0, 22, 0, 0,
+					(tonumber(string.sub(stdout, -5, -3)) / 100), beautiful.catpuccin.red, beautiful.catpuccin.surface0)
+				widgets.batteryCap.bg = beautiful.catpuccin.red
+				widgets.batteryCase.border_color = beautiful.catpuccin.red
+			elseif (tonumber(string.sub(stdout, -5, -3)) <= batteryWarning) and (string.find(stdout, "discharging")) then
+				BatWarning = naughty.notify {
+					title = "BATTERY IS JUST " .. widgets.batteryText.text,
 					text = "better plug it in",
-					timeout=20,
+					timeout = 20,
 					replaces_id = BatWarning.id,
 				}
-				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.yellow,beautiful.catpuccin.surface0)
-				widgets.batteryCap.bg=beautiful.catpuccin.yellow
-				widgets.batteryCase.border_color=beautiful.catpuccin.yellow
-
-			elseif string.find(stdout,"discharging") then
-				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.fg_normal,beautiful.catpuccin.surface0)
-				widgets.batteryCap.bg=beautiful.fg_normal
-				widgets.batteryCase.border_color=beautiful.fg_normal
-
+				widgets.batteryInnerBar.bg = create.twoSolidColors(0, 22, 0, 0,
+					(tonumber(string.sub(stdout, -5, -3)) / 100), beautiful.catpuccin.yellow,
+					beautiful.catpuccin.surface0)
+				widgets.batteryCap.bg = beautiful.catpuccin.yellow
+				widgets.batteryCase.border_color = beautiful.catpuccin.yellow
+			elseif string.find(stdout, "discharging") then
+				widgets.batteryInnerBar.bg = create.twoSolidColors(0, 22, 0, 0,
+					(tonumber(string.sub(stdout, -5, -3)) / 100), beautiful.fg_normal, beautiful.catpuccin.surface0)
+				widgets.batteryCap.bg = beautiful.fg_normal
+				widgets.batteryCase.border_color = beautiful.fg_normal
 			else
-				widgets.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,(tonumber(string.sub(stdout, -5, -3))/100),beautiful.catpuccin.green,beautiful.catpuccin.surface0)
-				widgets.batteryCap.bg=beautiful.catpuccin.green
-				widgets.batteryCase.border_color=beautiful.catpuccin.green
+				widgets.batteryInnerBar.bg = create.twoSolidColors(0, 22, 0, 0,
+					(tonumber(string.sub(stdout, -5, -3)) / 100), beautiful.catpuccin.green, beautiful.catpuccin
+					.surface0)
+				widgets.batteryCap.bg = beautiful.catpuccin.green
+				widgets.batteryCase.border_color = beautiful.catpuccin.green
 				if (tonumber(string.sub(stdout, -5, -3)) >= batteryAlmostFull) then
-					BatWarning=naughty.notify {
-						title="Battery is almost full ("..widgets.batteryText.text..")",
+					BatWarning = naughty.notify {
+						title = "Battery is almost full (" .. widgets.batteryText.text .. ")",
 						replaces_id = BatWarning.id,
-						timeout=40
+						timeout = 40
 					}
 				end
 			end
-               -- if tonumber(string.sub(stdout, -5, -3)) < 11 then
-               --     awful.spawn.with_shell("systemctl hibernate")
-               -- end
-        end)
+			-- if tonumber(string.sub(stdout, -5, -3)) < 11 then
+			--     awful.spawn.with_shell("systemctl hibernate")
+			-- end
+		end)
 end
 
-local bilkul = {}
+local bilkul                 = {}
 
-Cool.brightness = function (val)
+Cool.brightness              = function(val)
 	-- awful.spawn.with_shell("brightnessctl s "..val)
-	awful.spawn.easy_async_with_shell(("brightnessctl s "..val),function (stdout, _, _, _)
+	awful.spawn.easy_async_with_shell(("brightnessctl s " .. val), function(stdout, _, _, _)
 		local currentB = stdout:match("%(([^%)]+)%)")
 		-- naughty.notify{title="Brightness changed" ,text = currentB}
 		bilkul = naughty.notify({
@@ -130,7 +133,7 @@ Cool.brightness = function (val)
 			replaces_id = bilkul.id,
 		})
 	end)
-		-- naughty.notify { text = ("brightnessctl s "..val) }
+	-- naughty.notify { text = ("brightnessctl s "..val) }
 	-- naughty.notify{text="yo"}
 end
 
@@ -146,8 +149,8 @@ widgets.bluetoothBox.buttons = gears.table.join(
 	awful.button({}, 2, function() awful.spawn.with_shell("kcmshell5 kcm_bluetooth") end)	-- Middle Click
 )
 
-Cool.setWallpaper = function (file,adjustment)
-	if adjustment=="fill" then
+Cool.setWallpaper            = function(file, adjustment)
+	if adjustment == "fill" then
 		gears.wallpaper.maximized(file)
 	else
 		gears.wallpaper.fit(file)
@@ -155,7 +158,7 @@ Cool.setWallpaper = function (file,adjustment)
 	Cool.wallpaperInfo()
 end
 
-local wallOffset = 0
+local wallOffset             = 0
 local k
 -- local active_wallp
 -- gears.wallpaper.fit(Cool.active_wallp)
@@ -190,7 +193,7 @@ Cool.wallpaperInfo = function()
 	local file = Cool.active_wallp:gsub("/home/harshit/Harshit_Work/Funny_Stuff/", ""):gsub("/home/harshit/Harshit_Work/", "")
 	local sub = file:sub(1, file:find("/") - 1):gsub("z_", "r/")
 	local post = file:sub(file:find("/") + 1, -5)
-	bilkul = naughty.notify{
+	bilkul = naughty.notify {
 		title = sub,
 		text = post,
 		timeout = 10,
@@ -211,7 +214,7 @@ local connected_devices
 local prev_bt_output
 local bt_dekhu
 
-Cool.updateBluetooth = function ()
+Cool.updateBluetooth         = function()
 	awful.spawn.easy_async_with_shell("bluetoothctl devices Connected",
 		function(stdout, _, _, _)
 			if stdout ~= prev_bt_output then
@@ -266,11 +269,11 @@ Cool.updateBluetooth = function ()
 		end)
 end
 
-Cool.bluetoothUpdateTimer = gears.timer {
+Cool.bluetoothUpdateTimer    = gears.timer {
 	timeout = 30,
 	autostart = true,
 	call_now = true,
-	callback = function ()
+	callback = function()
 		Cool.updateBluetooth()
 	end
 }
