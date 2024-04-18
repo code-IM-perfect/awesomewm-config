@@ -2,7 +2,7 @@
 local Cool = {}
 local wibox = require("wibox")
 local gears = require("gears")
-local naughty = require("naughty")
+-- local naughty = require("naughty")
 
 Cool.widgetSpacer = function(width)
 	local hh = {
