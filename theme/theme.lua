@@ -2,20 +2,20 @@
 -- Default awesome theme --
 ---------------------------
 
-local theme_assets        = require("beautiful.theme_assets")
-local xresources          = require("beautiful.xresources")
-local rnotification       = require("ruled.notification")
-local dpi                 = xresources.apply_dpi
+local theme_assets  = require("beautiful.theme_assets")
+local xresources    = require("beautiful.xresources")
+local rnotification = require("ruled.notification")
+local dpi           = xresources.apply_dpi
 
-local gfs                 = require("gears.filesystem")
-local gears               = require("gears")
-local themes_path         = gfs.get_themes_dir()
+local gfs           = require("gears.filesystem")
+local gears         = require("gears")
+local themes_path   = gfs.get_themes_dir()
 -- local config              = gfs.get_configuration_dir()
-local config              = '/home/harshit/.config/awesome/'
+local config        = '/home/harshit/.config/awesome/'
 
-local theme               = {}
+local theme         = {}
 
-theme.icon = {
+theme.icon          = {
 	mutedCat = config .. "icons/vol/1.svg",
 	volCat2 = config .. "icons/vol/2.svg",
 	volCat3 = config .. "icons/vol/3.svg",
@@ -33,7 +33,7 @@ theme.icon = {
 }
 
 
-theme.catpuccin           = require("colors.catpuccin")
+theme.catpuccin = require("colors.catpuccin")
 
 -- Better white
 -- theme.catpuccin.text = "#ffffff"
@@ -41,63 +41,65 @@ theme.catpuccin           = require("colors.catpuccin")
 
 
 ---- MAUVE
-theme.catpuccin.text = "#f1e9fb"
-theme.catpuccin.subtext1 = "#c9b8e0"
-theme.catpuccin.subtext0 = "#b6a5cb"
+theme.catpuccin.text                        = "#f1e9fb"
+theme.catpuccin.subtext1                    = "#c9b8e0"
+theme.catpuccin.subtext0                    = "#b6a5cb"
 
-theme.catpuccin.overlay2 = "#a593b7"
-theme.catpuccin.overlay1 = "#9180a2"
-theme.catpuccin.overlay0 = "#7f6e8d"
-theme.catpuccin.surface2 = "#695b78"
-theme.catpuccin.surface1 = "#564964"
-theme.catpuccin.surface0 = "#41364f"
-theme.catpuccin.base = "#2f243a"
-theme.catpuccin.mantle = "#271e30"
-theme.catpuccin.crust = "#1e1826"
+theme.catpuccin.overlay2                    = "#a593b7"
+theme.catpuccin.overlay1                    = "#9180a2"
+theme.catpuccin.overlay0                    = "#7f6e8d"
+theme.catpuccin.surface2                    = "#695b78"
+theme.catpuccin.surface1                    = "#564964"
+theme.catpuccin.surface0                    = "#41364f"
+theme.catpuccin.base                        = "#2f243a"
+theme.catpuccin.mantle                      = "#271e30"
+theme.catpuccin.crust                       = "#1e1826"
 
-theme.themeColor          = theme.catpuccin.mauve
-theme.icon.bluetoothActive = config .. "icons/bt/active_mauve.svg"
+theme.themeColor                            = theme.catpuccin.mauve
+-- theme.themeColorText                        = "#d0bee6"
+theme.icon.bluetoothActive                  = config .. "icons/bt/active_mauve.svg"
 
 -- local tokyoNight = require("colors.tokyoNight")
 -- local brightColors = require("colors.tokyoNightColors")
 
 -- theme.font                = "Source Sans Pro 11"
-theme.font                = "Sans 11"
+theme.font                                  = "Sans 11"
 
-theme.bg_normal           = theme.catpuccin.crust
+theme.bg_normal                             = theme.catpuccin.crust
 -- theme.bg_normal           = theme.catpuccin.base
-theme.wibar_widget_background = theme.catpuccin.surface0
-theme.bg_focus            = theme.themeColor
-theme.bg_urgent           = theme.catpuccin.red
-theme.bg_minimize         = "#444444"
-theme.bg_systray          = theme.catpuccin.surface0
+theme.wibar_widget_background               = theme.catpuccin.surface0
+theme.bg_focus                              = theme.themeColor
+theme.bg_urgent                             = theme.catpuccin.red
+theme.bg_minimize                           = "#444444"
+theme.bg_systray                            = theme.catpuccin.surface0
 
-theme.fg_normal           = theme.catpuccin.text
-theme.fg_focus            = "#ffffff"
-theme.fg_urgent           = "#ffffff"
-theme.fg_minimize         = "#ffffff"
+theme.fg_normal                             = theme.catpuccin.text
+-- theme.fg_normal                             = theme.themeColorText
+theme.fg_focus                              = "#ffffff"
+theme.fg_urgent                             = "#ffffff"
+theme.fg_minimize                           = "#ffffff"
 
-theme.useless_gap         = dpi(3)
-theme.border_width        = dpi(3)
-theme.border_color_normal = "#000000"
-theme.border_color_active = theme.themeColor
-theme.border_color_marked = "#91231c"
+theme.useless_gap                           = dpi(3)
+theme.border_width                          = dpi(3)
+theme.border_color_normal                   = "#000000"
+theme.border_color_active                   = theme.themeColor
+theme.border_color_marked                   = "#91231c"
 
-theme.taglist_fg_focus    = theme.catpuccin.crust
-theme.taglist_fg_occupied    = theme.catpuccin.crust
+theme.taglist_fg_focus                      = theme.catpuccin.crust
+theme.taglist_fg_occupied                   = theme.catpuccin.crust
 -- theme.taglist_bg_occupied    = theme.catpuccin.surface0
-theme.taglist_bg_occupied    = theme.catpuccin.green
-theme.taglist_bg_empty    = theme.catpuccin.surface1
-theme.taglist_bg_urgent    = theme.bg_urgent
-theme.taglist_bg_focus    = theme.themeColor
+theme.taglist_bg_occupied                   = theme.catpuccin.green
+theme.taglist_bg_empty                      = theme.catpuccin.surface1
+theme.taglist_bg_urgent                     = theme.bg_urgent
+theme.taglist_bg_focus                      = theme.themeColor
 
-theme.tasklist_fg_focus    = theme.catpuccin.crust
-theme.tasklist_bg_minimize    = theme.wibar_widget_background
-theme.tasklist_bg_normal    = theme.wibar_widget_background
-theme.tasklist_bg_urgent    = theme.bg_urgent
+theme.tasklist_fg_focus                     = theme.catpuccin.crust
+theme.tasklist_bg_minimize                  = theme.wibar_widget_background
+theme.tasklist_bg_normal                    = theme.wibar_widget_background
+theme.tasklist_bg_urgent                    = theme.bg_urgent
 
-theme.tasklist_shape_border_color = theme.themeColor
-theme.tasklist_shape_border_width = 3
+theme.tasklist_shape_border_color           = theme.themeColor
+theme.tasklist_shape_border_width           = 3
 theme.tasklist_shape_border_color_minimized = nil
 theme.tasklist_shape_border_width_minimized = 0
 
@@ -106,10 +108,10 @@ theme.tasklist_shape_border_width_minimized = 0
 -- theme. = theme.catpuccin.
 -- theme. = theme.catpuccin.
 -- theme. = theme.catpuccin.
-theme.taglist_shape_border_width = 6
-theme.taglist_shape_border_width_empty = 5
-theme.taglist_shape_border_width_focus = 3
-theme.taglist_shape_border_color = theme.catpuccin.base
+theme.taglist_shape_border_width            = 6
+theme.taglist_shape_border_width_empty      = 5
+theme.taglist_shape_border_width_focus      = 3
+theme.taglist_shape_border_color            = theme.catpuccin.base
 
 
 theme.tasklist_fg_focus = theme.catpuccin.crust
@@ -145,9 +147,9 @@ theme.tasklist_fg_focus = theme.catpuccin.crust
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon     = themes_path .. "default/submenu.png"
-theme.menu_height           = dpi(15)
-theme.menu_width            = dpi(100)
+theme.menu_submenu_icon = themes_path .. "default/submenu.png"
+theme.menu_height       = dpi(15)
+theme.menu_width        = dpi(100)
 
 -- You can add as many variables as
 -- you wish and access them by using
@@ -202,22 +204,55 @@ theme.wibar_height = dpi(37)
 
 
 -- {{ You can use your own layout icons like this:
-theme.layout_fairh       = gears.color.recolor_image(themes_path .. "default/layouts/fairhw.png",theme.fg_normal)
-theme.layout_fairv       = gears.color.recolor_image(themes_path .. "default/layouts/fairvw.png",theme.fg_normal)
-theme.layout_floating    = gears.color.recolor_image(themes_path .. "default/layouts/floatingw.png", theme.fg_normal)
-theme.layout_magnifier   = gears.color.recolor_image(themes_path .. "default/layouts/magnifierw.png", theme.fg_normal)
-theme.layout_max         = gears.color.recolor_image(themes_path .. "default/layouts/maxw.png",	theme.fg_normal)
-theme.layout_fullscreen  = gears.color.recolor_image(themes_path .. "default/layouts/fullscreenw.png", theme.fg_normal)
-theme.layout_tilebottom  = gears.color.recolor_image(themes_path .. "default/layouts/tilebottomw.png", theme.fg_normal)
-theme.layout_tileleft    = gears.color.recolor_image(themes_path .. "default/layouts/tileleftw.png", theme.fg_normal)
-theme.layout_tile        = gears.color.recolor_image(themes_path .. "default/layouts/tilew.png",theme.fg_normal)
-theme.layout_tiletop     = gears.color.recolor_image(themes_path .. "default/layouts/tiletopw.png", theme.fg_normal)
-theme.layout_spiral      = gears.color.recolor_image(themes_path .. "default/layouts/spiralw.png",	theme.fg_normal)
-theme.layout_dwindle     = gears.color.recolor_image(themes_path .. "default/layouts/dwindlew.png", theme.fg_normal)
-theme.layout_cornernw    = gears.color.recolor_image(themes_path .. "default/layouts/cornernww.png", theme.fg_normal)
-theme.layout_cornerne    = gears.color.recolor_image(themes_path .. "default/layouts/cornernew.png", theme.fg_normal)
-theme.layout_cornersw    = gears.color.recolor_image(themes_path .. "default/layouts/cornersww.png", theme.fg_normal)
-theme.layout_cornerse    = gears.color.recolor_image(themes_path .. "default/layouts/cornersew.png", theme.fg_normal)
+-- theme.layout_fairh       = gears.color.recolor_image(themes_path .. "default/layouts/fairhw.png",theme.fg_normal)
+-- theme.layout_fairv       = gears.color.recolor_image(themes_path .. "default/layouts/fairvw.png",theme.fg_normal)
+-- theme.layout_floating    = gears.color.recolor_image(themes_path .. "default/layouts/floatingw.png", theme.fg_normal)
+-- theme.layout_magnifier   = gears.color.recolor_image(themes_path .. "default/layouts/magnifierw.png", theme.fg_normal)
+-- theme.layout_max         = gears.color.recolor_image(themes_path .. "default/layouts/maxw.png",	theme.fg_normal)
+-- theme.layout_fullscreen  = gears.color.recolor_image(themes_path .. "default/layouts/fullscreenw.png", theme.fg_normal)
+-- theme.layout_tilebottom  = gears.color.recolor_image(themes_path .. "default/layouts/tilebottomw.png", theme.fg_normal)
+-- theme.layout_tileleft    = gears.color.recolor_image(themes_path .. "default/layouts/tileleftw.png", theme.fg_normal)
+-- theme.layout_tile        = gears.color.recolor_image(themes_path .. "default/layouts/tilew.png",theme.fg_normal)
+-- theme.layout_tiletop     = gears.color.recolor_image(themes_path .. "default/layouts/tiletopw.png", theme.fg_normal)
+-- theme.layout_spiral      = gears.color.recolor_image(themes_path .. "default/layouts/spiralw.png",	theme.fg_normal)
+-- theme.layout_dwindle     = gears.color.recolor_image(themes_path .. "default/layouts/dwindlew.png", theme.fg_normal)
+-- theme.layout_cornernw    = gears.color.recolor_image(themes_path .. "default/layouts/cornernww.png", theme.fg_normal)
+-- theme.layout_cornerne    = gears.color.recolor_image(themes_path .. "default/layouts/cornernew.png", theme.fg_normal)
+-- theme.layout_cornersw    = gears.color.recolor_image(themes_path .. "default/layouts/cornersww.png", theme.fg_normal)
+-- theme.layout_cornerse    = gears.color.recolor_image(themes_path .. "default/layouts/cornersew.png", theme.fg_normal)
+
+theme.layout_fairh                              = gears.color.recolor_image(themes_path .. "default/layouts/fairhw.png",
+	theme.catpuccin.crust)
+theme.layout_fairv                              = gears.color.recolor_image(themes_path .. "default/layouts/fairvw.png",
+	theme.catpuccin.crust)
+theme.layout_floating                           = gears.color.recolor_image(
+	themes_path .. "default/layouts/floatingw.png", theme.catpuccin.crust)
+theme.layout_magnifier                          = gears.color.recolor_image(
+	themes_path .. "default/layouts/magnifierw.png", theme.catpuccin.crust)
+theme.layout_max                                = gears.color.recolor_image(themes_path .. "default/layouts/maxw.png",
+	theme.catpuccin.crust)
+theme.layout_fullscreen                         = gears.color.recolor_image(
+	themes_path .. "default/layouts/fullscreenw.png", theme.catpuccin.crust)
+theme.layout_tilebottom                         = gears.color.recolor_image(
+	themes_path .. "default/layouts/tilebottomw.png", theme.catpuccin.crust)
+theme.layout_tileleft                           = gears.color.recolor_image(
+	themes_path .. "default/layouts/tileleftw.png", theme.catpuccin.crust)
+theme.layout_tile                               = gears.color.recolor_image(themes_path .. "default/layouts/tilew.png",
+	theme.catpuccin.crust)
+theme.layout_tiletop                            = gears.color.recolor_image(
+	themes_path .. "default/layouts/tiletopw.png", theme.catpuccin.crust)
+theme.layout_spiral                             = gears.color.recolor_image(themes_path .. "default/layouts/spiralw.png",
+	theme.catpuccin.crust)
+theme.layout_dwindle                            = gears.color.recolor_image(
+	themes_path .. "default/layouts/dwindlew.png", theme.catpuccin.crust)
+theme.layout_cornernw                           = gears.color.recolor_image(
+	themes_path .. "default/layouts/cornernww.png", theme.catpuccin.crust)
+theme.layout_cornerne                           = gears.color.recolor_image(
+	themes_path .. "default/layouts/cornernew.png", theme.catpuccin.crust)
+theme.layout_cornersw                           = gears.color.recolor_image(
+	themes_path .. "default/layouts/cornersww.png", theme.catpuccin.crust)
+theme.layout_cornerse                           = gears.color.recolor_image(
+	themes_path .. "default/layouts/cornersew.png", theme.catpuccin.crust)
 -- }}
 
 -- {{ Define the image to load

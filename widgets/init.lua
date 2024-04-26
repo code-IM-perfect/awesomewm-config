@@ -1,15 +1,15 @@
-local _M          = {}
+local _M           = {}
 
-local awful       = require 'awful'
+local awful        = require 'awful'
 -- local hotkeys_popup = require 'awful.hotkeys_popup'
-local beautiful   = require 'beautiful'
-local wibox       = require 'wibox'
-local gears       = require 'gears'
+local beautiful    = require 'beautiful'
+local wibox        = require 'wibox'
+local gears        = require 'gears'
 
-local apps        = require 'config.apps'
-local mod         = require 'bindings.mod'
+local apps         = require 'config.apps'
+local mod          = require 'bindings.mod'
 
-local create        = require("cool.create")
+local create       = require("cool.create")
 
 -- _M.awesomemenu = {
 --    {'hotkeys', function() hotkeys_popup.show_help(nil, awful.screen.focused()) end},
@@ -31,37 +31,32 @@ local create        = require("cool.create")
 --    menu = _M.mainmenu
 -- }
 
-_M.textTime = wibox.container.place({
+_M.textTime        = wibox.container.place({
 	widget = wibox.widget.textclock,
 	format = "%l:%M %P",
 })
 
-_M.textDate = wibox.container.place({
+_M.textDate        = wibox.container.place({
 	widget = wibox.widget.textclock,
 	format = "%e %b %Y",
 	font = "Sans 8"
 })
 
-_M.keyboardlayout = awful.widget.keyboardlayout()
+_M.keyboardlayout  = awful.widget.keyboardlayout()
 -- _M.textclock      = wibox.widget.background(wibox.container.margin(wibox.widget.textclock("%a | %e %b %Y |%l:%M %P"),7,7))
-_M.textclock      = {
-		widget = wibox.widget.background,
-		wibox.container.margin({
+_M.textclock       = {
+	widget = wibox.widget.background,
+
+	wibox.container.margin({
 		layout = wibox.layout.align.vertical,
 		_M.textTime,
 		_M.textDate,
-	},7,7),
-	buttons = {
-		awful.button {
-			modifiers = {},
-			button    = 1,
-			on_press  = function() _M.textDate.visible = not(_M.textDate.visible) end,
-		},
-	}
-	}
-_M.textclock.bg = beautiful.catpuccin.surface0
-_M.textclock.shape = function (cr, width, height, _)
-	gears.shape.rounded_rect(cr,width,height,height/4)
+	}, 7, 7),
+}
+_M.textclock.bg    = beautiful.themeColor
+_M.textclock.fg    = beautiful.catpuccin.crust
+_M.textclock.shape = function(cr, width, height, _)
+	gears.shape.rounded_rect(cr, width, height, height / 4)
 end
 
 
@@ -73,18 +68,18 @@ _M.batteryInnerBar.forced_height = 21.5
 
 _M.batteryCase = wibox.container.background({
 	_M.batteryInnerBar,
-	widget=wibox.container.place,
-	valign="bottom"
+	widget = wibox.container.place,
+	valign = "bottom"
 })
 
 _M.batteryCase.border_width = 1
 _M.batteryCase.border_color = beautiful.fg_normal
-_M.batteryCase.forced_height=23
+_M.batteryCase.forced_height = 23
 
 _M.batteryCap = wibox.widget.background()
 
-_M.batteryCap.bg=beautiful.fg_normal
-_M.batteryCap.forced_height=3
+_M.batteryCap.bg = beautiful.fg_normal
+_M.batteryCap.forced_height = 3
 
 
 _M.batteryContainer = wibox.container.background({
@@ -93,35 +88,35 @@ _M.batteryContainer = wibox.container.background({
 			{
 				{
 					_M.batteryCap,
-					widget=wibox.container.margin,
-					right= 4,
-					left=4,
-					top=0,
+					widget = wibox.container.margin,
+					right = 4,
+					left = 4,
+					top = 0,
 				},
-			_M.batteryCase,
-			layout=wibox.layout.fixed.vertical,
-		},
-			widget=wibox.container.margin,
-			margins=4
+				_M.batteryCase,
+				layout = wibox.layout.fixed.vertical,
+			},
+			widget = wibox.container.margin,
+			margins = 4
 		},
 		_M.batteryText,
-		layout=wibox.layout.fixed.horizontal
+		layout = wibox.layout.fixed.horizontal
 	},
-widget=wibox.container.margin,
-right = batteryInternalMargins,
-left = batteryInternalMargins
+	widget = wibox.container.margin,
+	right = batteryInternalMargins,
+	left = batteryInternalMargins
 })
 
 -- _M.batteryContainer.bg = create.twoSolidColors(0,0,0,35,0.5,beautiful.catpuccin.red,beautiful.catpuccin.green)
 _M.batteryContainer.bg = beautiful.catpuccin.surface0
-_M.batteryContainer.shape = function (cr, width, height, _)
-	gears.shape.rounded_rect(cr,width,height,height/4)
+_M.batteryContainer.shape = function(cr, width, height, _)
+	gears.shape.rounded_rect(cr, width, height, height / 4)
 end
 
 _M.batteryInnerBar.border_width = 3
 _M.batteryInnerBar.border_color = _M.batteryContainer.bg
 
-_M.batteryInnerBar.bg = create.twoSolidColors(0,22,0,0,1,beautiful.fg_normal,beautiful.catpuccin.surface0)
+_M.batteryInnerBar.bg = create.twoSolidColors(0, 22, 0, 0, 1, beautiful.fg_normal, beautiful.catpuccin.surface0)
 -- _M.batteryInnerBar.bg = gears.color.create_linear_pattern("0,0:0,21.5:")
 
 
@@ -140,15 +135,15 @@ _M.volumeBox = wibox.container.background(
 			_M.volume_text,
 			layout = wibox.layout.fixed.horizontal,
 		},
-		widget=wibox.container.margin,
-		left=volboxInternalMargin,
-		right=volboxInternalMargin,
+		widget = wibox.container.margin,
+		left = volboxInternalMargin,
+		right = volboxInternalMargin,
 	}
 )
 
 _M.volumeBox.bg = beautiful.catpuccin.surface0
-_M.volumeBox.shape = function (cr, width, height, _)
-	gears.shape.rounded_rect(cr,width,height,height/4)
+_M.volumeBox.shape = function(cr, width, height, _)
+	gears.shape.rounded_rect(cr, width, height, height / 4)
 end
 
 
@@ -171,13 +166,13 @@ _M.bluetoothBox = wibox.container.background({
 		_M.bluetoothTray,
 		layout = wibox.layout.fixed.horizontal,
 	},
-	widget=wibox.container.margin,
-	left=blueboxInternalMargin,
-	right=blueboxInternalMargin,
+	widget = wibox.container.margin,
+	left = blueboxInternalMargin,
+	right = blueboxInternalMargin,
 })
 _M.bluetoothBox.bg = beautiful.catpuccin.surface0
-_M.bluetoothBox.shape = function (cr, width, height, _)
-	gears.shape.rounded_rect(cr,width,height,height/4)
+_M.bluetoothBox.shape = function(cr, width, height, _)
+	gears.shape.rounded_rect(cr, width, height, height / 4)
 end
 
 
@@ -213,9 +208,9 @@ end
 
 function _M.create_taglist(s)
 	return awful.widget.taglist {
-		screen  = s,
-		filter  = awful.widget.taglist.filter.all,
-		buttons = {
+		screen          = s,
+		filter          = awful.widget.taglist.filter.all,
+		buttons         = {
 			awful.button {
 				modifiers = {},
 				button    = 1,
@@ -255,25 +250,25 @@ function _M.create_taglist(s)
 			-- 	on_press  = function(t) awful.tag.viewnext(t.screen) end,
 			-- },
 		},
-		style = {
+		style           = {
 			shape = gears.shape.rounded_rect,
 		},
 		widget_template = {
 			{
-				 {
-					  {
-							id     = "text_role",
-							widget = wibox.widget.textbox,
-					  },
-					  layout = wibox.layout.fixed.horizontal,
-				 },
-				 left  = 13,
-				 right = 13,
-				 widget = wibox.container.margin
+				{
+					{
+						id     = "text_role",
+						widget = wibox.widget.textbox,
+					},
+					layout = wibox.layout.fixed.horizontal,
+				},
+				left   = 13,
+				right  = 13,
+				widget = wibox.container.margin
 			},
 			id     = "background_role",
 			widget = wibox.container.background,
-	  },
+		},
 	}
 end
 
@@ -330,8 +325,8 @@ function _M.create_tasklist(s)
 			forced_height = beautiful.wibar_height,
 		},
 		style = {
-			shape = function (cr, width, height, _)
-				gears.shape.rounded_rect(cr,width,height,height/4)
+			shape = function(cr, width, height, _)
+				gears.shape.rounded_rect(cr, width, height, height / 4)
 			end,
 		},
 	}
@@ -349,17 +344,17 @@ function _M.create_wibox(s)
 				-- _M.launcher,
 				{
 					s.taglist,
-					widget=wibox.container.background,
+					widget = wibox.container.background,
 					bg = beautiful.catpuccin.base,
-					shape = function (cr, width, height, _)
-						gears.shape.rounded_rect(cr,width,height,height/4)
+					shape = function(cr, width, height, _)
+						gears.shape.rounded_rect(cr, width, height, height / 4)
 					end
 				},
 				s.promptbox,
 				create.widgetSpacer(10),
 			},
 			-- middle widgets
-				s.tasklist,
+			s.tasklist,
 			-- right widgets
 			{
 				layout = wibox.layout.fixed.horizontal,
@@ -368,14 +363,14 @@ function _M.create_wibox(s)
 				{
 					{
 						wibox.widget.systray(),
-						widget=wibox.container.margin,
+						widget = wibox.container.margin,
 						left = 6,
 						right = 6,
 					},
-					widget=wibox.container.background,
+					widget = wibox.container.background,
 					bg = beautiful.catpuccin.surface0,
-					shape = function (cr, width, height, _)
-						gears.shape.rounded_rect(cr,width,height,height/4)
+					shape = function(cr, width, height, _)
+						gears.shape.rounded_rect(cr, width, height, height / 4)
 					end
 				},
 				create.widgetSpacer(6),
@@ -387,18 +382,19 @@ function _M.create_wibox(s)
 				create.widgetSpacer(6),
 				_M.textclock,
 				create.widgetSpacer(6),
-				{{
+				{ {
 					s.layoutbox,
 					widget = wibox.container.margin,
 					margins = 5,
 
 				},
-				widget=wibox.container.background,
-				bg = beautiful.catpuccin.surface0,
-				shape = function (cr, width, height, _)
-					gears.shape.rounded_rect(cr,width,height,height/4)
-				end
-			}
+					widget = wibox.container.background,
+					-- bg = beautiful.catpuccin.surface0,
+					bg = beautiful.themeColor,
+					shape = function(cr, width, height, _)
+						gears.shape.rounded_rect(cr, width, height, height / 4)
+					end
+				}
 			}
 		}
 	}

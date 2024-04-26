@@ -137,16 +137,18 @@ Cool.brightness              = function(val)
 	-- naughty.notify{text="yo"}
 end
 
-widgets.volumeBox.buttons = gears.table.join(
-	awful.button({}, 1, function() Cool.toggle_mute() end),			-- Left Click
-	awful.button({}, 4, function() Cool.change_vol("2%+") end),		-- Scroll Up
-	awful.button({}, 5, function() Cool.change_vol("2%-") end),		-- Scroll Down
-	awful.button({}, 2, function() awful.spawn.with_shell("kcmshell5 kcm_pulseaudio") end)	-- Middle Click
+widgets.volumeBox.buttons    = gears.table.join(
+	awful.button({}, 1, function() Cool.toggle_mute() end),                             -- Left Click
+	awful.button({}, 4, function() Cool.change_vol("2%+") end),                         -- Scroll Up
+	awful.button({}, 5, function() Cool.change_vol("2%-") end),                         -- Scroll Down
+	awful.button({}, 2, function() Cool.updateVolume() end),                            -- Middle Click
 )
 
 widgets.bluetoothBox.buttons = gears.table.join(
-	awful.button({}, 3, function() Cool.updateBluetooth() naughty.notify{title = "Updated Bluetooth Widget"} end),			-- Right Click
-	awful.button({}, 2, function() awful.spawn.with_shell("kcmshell5 kcm_bluetooth") end)	-- Middle Click
+	awful.button({}, 2, function()
+		Cool.updateBluetooth()
+		naughty.notify { title = "Updated Bluetooth Widget" }
+	end),                                                                              -- Right Click
 )
 
 Cool.setWallpaper            = function(file, adjustment)
@@ -163,34 +165,28 @@ local k
 -- local active_wallp
 -- gears.wallpaper.fit(Cool.active_wallp)
 
-Cool.changeWallpaper = function (inputTable)
-	if inputTable == "prev" then
-		wallOffset=wallOffset+1
-		k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
-		Cool.active_wallp=k[#k-wallOffset]
-		Cool.setWallpaper(Cool.active_wallp)
-	elseif inputTable == "current" then
-		wallOffset=0
-		k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
-		Cool.active_wallp = k[#k]
-		Cool.setWallpaper(Cool.active_wallp)
-	else
-		if wallOffset==0 then
-			awful.spawn.easy_async_with_shell("~/.config/awesome/wallpaperSources/fileget/fileget "..table.concat(inputTable," "), function (wallFile, _, _, _)
-				Cool.active_wallp = wallFile:gsub("\n","")
-				Cool.setWallpaper(Cool.active_wallp)
-			end)
-		else
-			wallOffset=wallOffset-1
+Cool.changeWallpaper         = function(inputTable, fitMode)
+	if fitMode == nil then
+		Cool.WallpaperFit = true
+		if inputTable == "prev" then
+			wallOffset = wallOffset + 1
 			k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
-			Cool.active_wallp = k[#k-wallOffset]
+			Cool.active_wallp = k[#k - wallOffset]
+			Cool.setWallpaper(Cool.active_wallp)
+		elseif inputTable == "current" then
+						Cool.setWallpaper(Cool.active_wallp)
+					end)
+			else
+				wallOffset = wallOffset - 1
+				k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
 			Cool.setWallpaper(Cool.active_wallp)
 		end
 	end
 end
 
-Cool.wallpaperInfo = function()
-	local file = Cool.active_wallp:gsub("/home/harshit/Harshit_Work/Funny_Stuff/", ""):gsub("/home/harshit/Harshit_Work/", "")
+Cool.wallpaperInfo           = function()
+	local file = Cool.active_wallp:gsub("/home/harshit/Harshit_Work/Funny_Stuff/", ""):gsub(
+		"/home/harshit/Harshit_Work/", "")
 	local sub = file:sub(1, file:find("/") - 1):gsub("z_", "r/")
 	local post = file:sub(file:find("/") + 1, -5)
 	bilkul = naughty.notify {
