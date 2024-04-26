@@ -146,6 +146,8 @@ _M.volumeBox.shape = function(cr, width, height, _)
 	gears.shape.rounded_rect(cr, width, height, height / 4)
 end
 
+--- all mouse buttons are at cool/modify
+
 
 
 ---------- B L U E T O O T H ------------
