@@ -186,6 +186,15 @@ Cool.changeWallpaper         = function(inputTable, fitMode)
 	end
 end
 
+Cool.setAsCurrentWallpaper   = function()
+	if wallOffset ~= 0 then
+		wallOffset = 0
+		awful.spawn.with_shell("~/.config/awesome/wallpaperSources/fileget/fileget --setFile '" .. Cool.active_wallp ..
+			"'")
+	end
+	Cool.wallpaperInfo()
+end
+
 Cool.wallpaperInfo           = function()
 	local file = Cool.active_wallp:gsub("/home/harshit/Harshit_Work/Funny_Stuff/", ""):gsub(
 		"/home/harshit/Harshit_Work/", "")
