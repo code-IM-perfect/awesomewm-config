@@ -150,6 +150,7 @@ widgets.bluetoothBox.buttons = gears.table.join(
 		Cool.updateBluetooth()
 		naughty.notify { title = "Updated Bluetooth Widget" }
 	end),                                                                              -- Right Click
+	awful.button({}, 3, function() awful.spawn.with_shell("kcmshell6 kcm_bluetooth") end) -- Middle Click
 )
 
 Cool.setWallpaper            = function(file, adjustment)
