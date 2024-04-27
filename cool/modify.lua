@@ -244,6 +244,8 @@ Cool.updateBluetooth         = function()
 						img = beautiful.icon.buds
 					elseif string.find(device.name, "rockerz") or string.find(device.name, "Rockerz") then
 						img = beautiful.icon.headphones
+					elseif string.find(device.name, "WH-") or string.find(device.name, "wh-") then
+						img = beautiful.icon.headphones
 					elseif string.find(device.name, "JBL GO") then
 						img = beautiful.icon.speaker
 					else
