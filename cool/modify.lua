@@ -167,6 +167,8 @@ local k
 -- local active_wallp
 -- gears.wallpaper.fit(Cool.active_wallp)
 
+-- Cool.active_wallp            = "/home/harshit/.config/awesome/theme/arch-black-4k.png"
+
 Cool.changeWallpaper         = function(inputTable, fitMode)
 	if fitMode == nil then
 		Cool.WallpaperFit = true
@@ -176,12 +178,66 @@ Cool.changeWallpaper         = function(inputTable, fitMode)
 			Cool.active_wallp = k[#k - wallOffset]
 			Cool.setWallpaper(Cool.active_wallp)
 		elseif inputTable == "current" then
+			if (wallOffset == 0 and Cool.active_wallp ~= nil) then
+				Cool.wallpaperInfo()
+			else
+				wallOffset = 0
+				k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+				Cool.active_wallp = k[#k]
+				Cool.setWallpaper(Cool.active_wallp)
+			end
+		else
+			if wallOffset == 0 then
+				awful.spawn.easy_async_with_shell(
+					"~/.config/awesome/wallpaperSources/fileget/fileget " .. table.concat(inputTable, " "),
+					function(wallFile, _, _, _)
+						Cool.active_wallp = wallFile:gsub("\n", "")
 						Cool.setWallpaper(Cool.active_wallp)
 					end)
 			else
 				wallOffset = wallOffset - 1
 				k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+				Cool.active_wallp = k[#k - wallOffset]
+				Cool.setWallpaper(Cool.active_wallp)
+			end
+		end
+	elseif fitMode == "toggleFitMode" then
+		Cool.WallpaperFit = not (Cool.WallpaperFit)
+		if Cool.WallpaperFit == true then
 			Cool.setWallpaper(Cool.active_wallp)
+		else
+			Cool.setWallpaper(Cool.active_wallp, "fill")
+		end
+	else
+		Cool.WallpaperFit = false
+		if inputTable == "prev" then
+			wallOffset = wallOffset + 1
+			k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+			Cool.active_wallp = k[#k - wallOffset]
+			Cool.setWallpaper(Cool.active_wallp, "fill")
+		elseif inputTable == "current" then
+			if wallOffset == 0 then
+				Cool.wallpaperInfo()
+			else
+				wallOffset = 0
+				k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+				Cool.active_wallp = k[#k]
+				Cool.setWallpaper(Cool.active_wallp, "fill")
+			end
+		else
+			if wallOffset == 0 then
+				awful.spawn.easy_async_with_shell(
+					"~/.config/awesome/wallpaperSources/fileget/fileget " .. table.concat(inputTable, " "),
+					function(wallFile, _, _, _)
+						Cool.active_wallp = wallFile:gsub("\n", "")
+						Cool.setWallpaper(Cool.active_wallp, "fill")
+					end)
+			else
+				wallOffset = wallOffset - 1
+				k = dofile('/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua')
+				Cool.active_wallp = k[#k - wallOffset]
+				Cool.setWallpaper(Cool.active_wallp, "fill")
+			end
 		end
 	end
 end
