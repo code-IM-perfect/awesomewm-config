@@ -52,6 +52,14 @@ _M.textclock       = {
 		_M.textTime,
 		_M.textDate,
 	}, 7, 7),
+
+	-- buttons = {
+	-- 	awful.button {
+	-- 		modifiers = {},
+	-- 		button    = 1,
+	-- 		on_press  = function() _M.textDate.visible = not(_M.textDate.visible) end,
+	-- 	},
+	-- }
 }
 _M.textclock.bg    = beautiful.themeColor
 _M.textclock.fg    = beautiful.catpuccin.crust
