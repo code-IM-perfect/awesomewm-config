@@ -142,6 +142,7 @@ widgets.volumeBox.buttons    = gears.table.join(
 	awful.button({}, 4, function() Cool.change_vol("2%+") end),                         -- Scroll Up
 	awful.button({}, 5, function() Cool.change_vol("2%-") end),                         -- Scroll Down
 	awful.button({}, 2, function() Cool.updateVolume() end),                            -- Middle Click
+	awful.button({}, 3, function() awful.spawn.with_shell("kcmshell6 kcm_pulseaudio") end) -- Right Click
 )
 
 widgets.bluetoothBox.buttons = gears.table.join(
