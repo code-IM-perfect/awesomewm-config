@@ -53,6 +53,12 @@ ruled.client.connect_signal('request::rules', function()
       properties = { titlebars_enabled = false },
    }
 
+   -- ruled.client.append_rule {
+   --    id         = 'titlebarrr',
+   --    rule_any   = { floating = true },
+   --    properties = { titlebars_enabled = true },
+   -- }
+
    -- Set Firefox to always map on the tag named '2' on screen 1.
    -- ruled.client.append_rule {
    --    rule       = {class = 'Firefox'},
@@ -61,5 +67,9 @@ ruled.client.connect_signal('request::rules', function()
    ruled.client.append_rule {
       rule       = {class = 'MEGAsync'},
       properties = {placement = awful.placement.top_right}
+   }
+   ruled.client.append_rule {
+      rule_any    = {instance = {'Devtools'}},
+      properties  = {floating=true, ontop = true}
    }
 end)
