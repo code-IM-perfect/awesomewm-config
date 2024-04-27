@@ -27,23 +27,29 @@ func addToList(path string, di fs.DirEntry, err error) error {
 }
 
 func main() {
-	// accepted extensions
-	Extensions = []string{"png", "jpg", "jpeg"}
+	selectedFile := ""
 
-	source := rand.NewSource(time.Now().UnixNano())
-	random := rand.New(source)
+	if os.Args[1] == "--setFile" {
+		selectedFile = os.Args[2]
+	} else {
+		// accepted extensions
+		Extensions = []string{"png", "jpg", "jpeg"}
 
-	for _, directory := range os.Args[1:] {
-		err := filepath.WalkDir(directory, addToList)
-		if err != nil {
-			fmt.Printf("There was a problem reading %v-\n%v", directory, err)
+		source := rand.NewSource(time.Now().UnixNano())
+		random := rand.New(source)
+
+		for _, directory := range os.Args[1:] {
+			err := filepath.WalkDir(directory, addToList)
+			if err != nil {
+				fmt.Printf("There was a problem reading %v-\n%v", directory, err)
+			}
+			// fmt.Printf("yooo added %v\n", directory)
 		}
-		// fmt.Printf("yooo added %v\n", directory)
-	}
 
-	selectedFile := FileList[random.Intn(len(FileList))]
-	// fmt.Println("The Selected File is-")
-	fmt.Print(selectedFile)
+		selectedFile = FileList[random.Intn(len(FileList))]
+		// fmt.Println("The Selected File is-")
+		fmt.Print(selectedFile)
+	}
 
 	file, err := os.OpenFile("/home/harshit/.config/awesome/wallpaperSources/fileget/history.lua", os.O_WRONLY, os.ModeAppend)
 	if err != nil {
