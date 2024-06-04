@@ -72,6 +72,14 @@ awful.keyboard.append_global_keybindings {
 	},
 
 	awful.key {
+		modifiers   = { mod.super },
+		key         = 'y',
+		description = 'Open yazi',
+		group       = 'applications',
+		on_press    = function() awful.spawn.with_shell("yazi") end,
+	},
+
+	awful.key {
 		modifiers   = { mod.super, mod.ctrl },
 		key         = 'k',
 		description = 'Open Kronometer',
