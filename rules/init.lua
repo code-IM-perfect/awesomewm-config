@@ -69,7 +69,16 @@ ruled.client.connect_signal('request::rules', function()
       properties = {placement = awful.placement.top_right}
    }
    ruled.client.append_rule {
-      rule_any    = {instance = {'Devtools'}},
+      rule_any    = {
+         instance = {
+            'Devtools',
+         },
+         class = {
+            'Emulator',
+            'com.github.Aylur.ags',
+            'Com.github.Aylur.ags',
+         }
+      },
       properties  = {floating=true, ontop = true}
    }
 end)
