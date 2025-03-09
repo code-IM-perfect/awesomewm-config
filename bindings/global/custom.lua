@@ -1,24 +1,23 @@
-local awful = require 'awful'
-local naughty = require 'naughty'
-local beautiful = require 'beautiful'
-local mod = require 'bindings.mod'
-local modify = require 'cool.modify'
+local awful = require("awful")
+local naughty = require("naughty")
+local beautiful = require("beautiful")
+local mod = require("bindings.mod")
+local modify = require("cool.modify")
 -- local widgets = require 'widgets'
 
 local wall_src = {
-	all = require 'wallpaperSources.all',
-	astro = require 'wallpaperSources.astro',
-	calvin = require 'wallpaperSources.calvin',
-	cats = require 'wallpaperSources.cats',
-	cool = require 'wallpaperSources.cool',
-	find = require 'wallpaperSources.find',
-	gard = require 'wallpaperSources.gard',
-	redd = require 'wallpaperSources.redd',
-	windoze = require 'wallpaperSources.windoze',
+	all = require("wallpaperSources.all"),
+	astro = require("wallpaperSources.astro"),
+	calvin = require("wallpaperSources.calvin"),
+	cats = require("wallpaperSources.cats"),
+	cool = require("wallpaperSources.cool"),
+	find = require("wallpaperSources.find"),
+	gard = require("wallpaperSources.gard"),
+	redd = require("wallpaperSources.redd"),
+	windoze = require("wallpaperSources.windoze"),
 }
 
-local terminal = require 'config.apps'.terminal
-
+local terminal = require("config.apps").terminal
 
 -- launch apps
 awful.keyboard.append_global_keybindings {
