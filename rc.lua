@@ -32,13 +32,13 @@ require 'autostart'
 
 -- turn titlebar on when client is floating
 -------------------------------------------------------------------------------
-client.connect_signal("property::floating", function(c)
-	if c.floating and not c.requests_no_titlebar and c.class ~= "firefox" then
-		awful.titlebar.show(c)
-	else
-		awful.titlebar.hide(c)
-	end
-end)
+-- client.connect_signal("property::floating", function(c)
+-- 	if c.floating and not c.requests_no_titlebar and c.class ~= "firefox" then
+-- 		awful.titlebar.show(c)
+-- 	else
+-- 		awful.titlebar.hide(c)
+-- 	end
+-- end)
 -- turn tilebars on when layout is floating
 -------------------------------------------------------------------------------
 

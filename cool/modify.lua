@@ -1,13 +1,13 @@
 ------------------------------------ Widget Manipulating Functions ------------------------------
-local Cool                   = {}
+local Cool = {}
 
-local beautiful              = require("beautiful")
-local gears                  = require("gears")
-local awful                  = require("awful")
-local naughty                = require("naughty")
-local create                 = require("cool.create")
+local beautiful = require("beautiful")
+local gears = require("gears")
+local awful = require("awful")
+local naughty = require("naughty")
+local create = require("cool.create")
 
-local widgets                = require("widgets")
+local widgets = require("widgets")
 
 Cool.updateVolume            = function()
 	awful.spawn.easy_async("wpctl get-volume @DEFAULT_AUDIO_SINK@",
