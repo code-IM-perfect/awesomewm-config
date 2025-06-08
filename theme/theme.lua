@@ -38,25 +38,24 @@ theme.catpuccin = require("colors.catpuccin")
 -- theme.catpuccin.text = "#ffffff"
 -- theme.catpuccin.text = "#e9edfb"  -- default made better
 
+------ MAUVE ------
+-- theme.catpuccin.text                        = "#f1e9fb"
+-- theme.catpuccin.subtext1                    = "#c9b8e0"
+-- theme.catpuccin.subtext0                    = "#b6a5cb"
+--
+-- theme.catpuccin.overlay2                    = "#a593b7"
+-- theme.catpuccin.overlay1                    = "#9180a2"
+-- theme.catpuccin.overlay0                    = "#7f6e8d"
+-- theme.catpuccin.surface2                    = "#695b78"
+-- theme.catpuccin.surface1                    = "#564964"
+-- theme.catpuccin.surface0                    = "#41364f"
+-- theme.catpuccin.base                        = "#2f243a"
+-- theme.catpuccin.mantle                      = "#271e30"
+-- theme.catpuccin.crust                       = "#1e1826"
 
----- MAUVE
-theme.catpuccin.text                        = "#f1e9fb"
-theme.catpuccin.subtext1                    = "#c9b8e0"
-theme.catpuccin.subtext0                    = "#b6a5cb"
-
-theme.catpuccin.overlay2                    = "#a593b7"
-theme.catpuccin.overlay1                    = "#9180a2"
-theme.catpuccin.overlay0                    = "#7f6e8d"
-theme.catpuccin.surface2                    = "#695b78"
-theme.catpuccin.surface1                    = "#564964"
-theme.catpuccin.surface0                    = "#41364f"
-theme.catpuccin.base                        = "#2f243a"
-theme.catpuccin.mantle                      = "#271e30"
-theme.catpuccin.crust                       = "#1e1826"
-
-theme.themeColor                            = theme.catpuccin.mauve
+theme.themeColor = theme.catpuccin.blue
 -- theme.themeColorText                        = "#d0bee6"
-theme.icon.bluetoothActive                  = config .. "icons/bt/active_mauve.svg"
+theme.icon.bluetoothActive = config .. "icons/bt/active_blue.svg"
 
 -- local tokyoNight = require("colors.tokyoNight")
 -- local brightColors = require("colors.tokyoNightColors")
