@@ -87,6 +87,7 @@ theme.border_color_marked = "#91231c"
 theme.taglist_fg_focus = theme.catpuccin.crust
 theme.taglist_fg_occupied = theme.catpuccin.crust
 -- theme.taglist_bg_occupied    = theme.catpuccin.surface0
+theme.taglist_bg_occupied = theme.catpuccin.green
 theme.taglist_bg_empty = theme.catpuccin.surface1
 theme.taglist_bg_urgent = theme.bg_urgent
 theme.taglist_bg_focus = theme.themeColor
