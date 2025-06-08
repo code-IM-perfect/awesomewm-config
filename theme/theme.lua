@@ -29,7 +29,7 @@ theme.icon = {
 	buds = config .. "icons/bt/devices/buds.svg",
 	headphones = config .. "icons/bt/devices/headphones.svg",
 	speaker = config .. "icons/bt/devices/speaker.svg",
-	generalBluetooth = config .. "icons/bt/devices/genral.svg",
+	generalBluetooth = config .. "icons/bt/devices/general.svg",
 }
 
 theme.catpuccin = require("colors.catpuccin")
