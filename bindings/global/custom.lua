@@ -20,39 +20,96 @@ local wall_src = {
 local terminal = require("config.apps").terminal
 
 -- launch apps
-awful.keyboard.append_global_keybindings {
+awful.keyboard.append_global_keybindings({
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'f',
-		description = 'Open Firefox',
-		group       = 'applications',
-		on_press    = function() awful.spawn("firefox") end,
-	},
+	awful.key({
+		modifiers = { mod.super },
+		key = "Insert",
+		description = "Auto Set Screen Layout",
+		group = "system",
+		on_press = function()
+			awful.spawn("autorandr -c")
+		end,
+	}),
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "Return",
+		description = "Open Konsole",
+		group = "applications",
+		on_press = function()
+			awful.spawn("konsole")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift },
-		key         = 'f',
-		description = 'Open Firefox Dev Edition',
-		group       = 'applications',
-		on_press    = function() awful.spawn("firefox -P nooooo") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "f",
+		description = "Open Firefox",
+		group = "applications",
+		on_press = function()
+			awful.spawn("firefox")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift, mod.ctrl },
-		key         = 'f',
-		description = 'Open Firefox Dev Edition Private Window',
-		group       = 'applications',
-		on_press    = function() awful.spawn("firefox -P nooooo --private-window") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "f",
+		description = "Open Firefox Dev Edition",
+		group = "applications",
+		on_press = function()
+			awful.spawn("firefox -P nooo")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.alt },
-		key         = 'f',
-		description = 'Open Firefox Private Window',
-		group       = 'applications',
-		on_press    = function() awful.spawn("firefox --private-window") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.shift, mod.ctrl },
+		key = "f",
+		description = "Open Firefox Dev Edition Private Window",
+		group = "applications",
+		on_press = function()
+			awful.spawn("firefox -P nooo --private-window")
+		end,
+	}),
+
+	awful.key({
+		modifiers = { mod.super, mod.alt },
+		key = "f",
+		description = "Open Firefox Private Window",
+		group = "applications",
+		on_press = function()
+			awful.spawn("firefox --private-window")
+		end,
+	}),
+
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "d",
+		description = "Open Zen Browser",
+		group = "applications",
+		on_press = function()
+			awful.spawn("zen-browser")
+		end,
+	}),
+
+	awful.key({
+		modifiers = { mod.super, mod.alt },
+		key = "d",
+		description = "Open Zen Private Window",
+		group = "applications",
+		on_press = function()
+			awful.spawn("zen-browser --private-window")
+		end,
+	}),
+
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "d",
+		description = "Open Zen faltuProfile",
+		group = "applications",
+		on_press = function()
+			awful.spawn("zen-browser -P 'faltuProfile'")
+		end,
+	}),
 
 	-- awful.key {
 	-- 	modifiers   = { mod.super, mod.shift },
@@ -62,273 +119,327 @@ awful.keyboard.append_global_keybindings {
 	-- 	on_press    = function() awful.spawn("firefox-developer-edition -P dev-ed-no --private-window") end,
 	-- },
 
-	awful.key {
-		modifiers   = { mod.super },
-		key         = 'e',
-		description = 'Open Dolphin',
-		group       = 'applications',
-		on_press    = function() awful.spawn.with_shell("dolphin") end,
-	},
+	awful.key({
+		modifiers = { mod.super },
+		key = "e",
+		description = "Open Dolphin",
+		group = "applications",
+		on_press = function()
+			awful.spawn.with_shell("dolphin")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super },
-		key         = 'y',
-		description = 'Open yazi',
-		group       = 'applications',
-		on_press    = function() awful.spawn.with_shell("yazi") end,
-	},
-
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'k',
-		description = 'Open Kronometer',
-		group       = 'applications',
-		on_press    = function() awful.spawn("kronometer") end,
-	},
-
-	awful.key { --- need command
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 's',
-		description = 'Open Spotify',
-		group       = 'applications',
+	awful.key({ --- need command
+		modifiers = { mod.super, mod.ctrl },
+		key = "s",
+		description = "Open Spotify",
+		group = "applications",
 		-- on_press    = function() awful.spawn("flatpak run com.spotify.Client") end,
-		on_press    = function() awful.spawn("spotify") end,
-	},
+		on_press = function()
+			awful.spawn("spotify")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'v',
-		description = 'Open VLC',
-		group       = 'applications',
-		on_press    = function() awful.spawn("vlc") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "v",
+		description = "Open VLC",
+		group = "applications",
+		on_press = function()
+			awful.spawn("vlc")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'c',
-		description = 'Open Qalc',
-		group       = 'applications',
-		on_press    = function() awful.spawn.with_shell(terminal .. " -e qalc") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "c",
+		description = "Open Qalc",
+		group = "applications",
+		on_press = function()
+			awful.spawn.with_shell(terminal .. " -e qalc")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'Escape',
-		description = 'Open htop',
-		group       = 'applications',
-		on_press    = function() awful.spawn.with_shell(terminal .. " -e htop") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "Escape",
+		description = "Open btop",
+		group = "applications",
+		on_press = function()
+			awful.spawn.with_shell(terminal .. " -e btop")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = '/',
-		description = 'Open VsCode',
-		group       = 'applications',
-		on_press    = function() awful.spawn("code") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "/",
+		description = "Open VsCode",
+		group = "applications",
+		on_press = function()
+			awful.spawn("code")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'b',
-		description = 'Open Bluetooth Settings',
-		group       = 'applications',
-		on_press    = function() awful.spawn("kcmshell6 kcm_bluetooth") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "w",
+		description = "Open Network Settings",
+		group = "applications",
+		on_press = function()
+			awful.spawn("kcmshell6 kcm_networkmanagement")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'w',
-		description = 'Open Network Settings',
-		group       = 'applications',
-		on_press    = function() awful.spawn("kcmshell6 kcm_networkmanagement") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "y",
+		description = "Open Bluetooth Settings",
+		group = "applications",
+		on_press = function()
+			awful.spawn("kcmshell6 kcm_bluetooth")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.ctrl },
-		key         = 'o',
-		description = 'Open Okular',
-		group       = 'applications',
-		on_press    = function() awful.spawn("Okular") end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.ctrl },
+		key = "o",
+		description = "Open Okular",
+		group = "applications",
+		on_press = function()
+			awful.spawn("Okular")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.alt },
-		key         = '0',
-		description = 'Save Posts',
-		group       = 'applications',
-		on_press    = function()
+	awful.key({
+		modifiers = { mod.super, mod.alt },
+		key = "0",
+		description = "Save Posts",
+		group = "applications",
+		on_press = function()
 			awful.spawn.with_shell(terminal .. " -e python '/home/harshit/Harshit_Work/Funny_Stuff/Save_Posts.py'") --- gotta change this
 		end,
-	},
-}
+	}),
+})
 
 -- Brightness
-awful.keyboard.append_client_keybindings {
-	awful.key {
-		modifiers   = { mod.ctrl },
-		key         = 'XF86MonBrightnessUp',
-		description = 'Increase Brightness',
-		group       = 'system',
-		on_press    = function()
+awful.keyboard.append_client_keybindings({
+	awful.key({
+		modifiers = { mod.ctrl },
+		key = "XF86MonBrightnessUp",
+		description = "Increase Brightness",
+		group = "system",
+		on_press = function()
 			modify.brightness("+5%")
 			-- naughty.notify{text="yo"}
 		end,
-	},
-	awful.key {
-		modifiers   = { mod.ctrl },
-		key         = 'XF86MonBrightnessDown',
-		description = 'Decrease Brightness',
-		group       = 'system',
-		on_press    = function()
+	}),
+	awful.key({
+		modifiers = { mod.ctrl },
+		key = "XF86MonBrightnessDown",
+		description = "Decrease Brightness",
+		group = "system",
+		on_press = function()
 			modify.brightness("5%-")
 		end,
-	},
-	awful.key {
-		modifiers   = {},
-		key         = 'XF86MonBrightnessUp',
-		description = 'Increase Brightness 1%',
-		group       = 'system',
-		on_press    = function()
+	}),
+	awful.key({
+		modifiers = {},
+		key = "XF86MonBrightnessUp",
+		description = "Increase Brightness 1%",
+		group = "system",
+		on_press = function()
 			modify.brightness("+1%")
 		end,
-	},
-	awful.key {
-		modifiers   = {},
-		key         = 'XF86MonBrightnessDown',
-		description = 'Decrease Brightness 1%',
-		group       = 'system',
-		on_press    = function()
+	}),
+	awful.key({
+		modifiers = {},
+		key = "XF86MonBrightnessDown",
+		description = "Decrease Brightness 1%",
+		group = "system",
+		on_press = function()
 			modify.brightness("1%-")
 		end,
-	},
-}
-
+	}),
+})
 
 -- Media Control
-awful.keyboard.append_global_keybindings {
-	awful.key({}, "XF86AudioPlay", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
-	awful.key({ mod.shift }, "XF86AudioPlay", function()
-		awful.spawn.with_shell(
-			"playerctl -i Gwenview -p spotify,playerctld play-pause")
+awful.keyboard.append_global_keybindings({
+	awful.key({}, "XF86AudioPlay", function()
+		awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false)
 	end),
-	awful.key({}, "XF86AudioPause", function() awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false) end),
-	awful.key({}, "XF86AudioNext", function() awful.spawn("playerctl -i Gwenview -p playerctld next", false) end),
-	awful.key({}, "XF86AudioPrev", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end),
+	awful.key({ mod.shift }, "XF86AudioPlay", function()
+		awful.spawn.with_shell("playerctl -i Gwenview -p spotify,elisa,mpd,playerctld play-pause")
+	end),
+	awful.key({ mod.alt }, "XF86AudioPlay", function()
+		awful.spawn.with_shell("playerctl -i Gwenview -p mpd,spotify,elisa,playerctld play-pause")
+	end),
+	-- For Keyboard
+	awful.key({ mod.shift }, "Insert", function()
+		awful.spawn.with_shell("playerctl -i Gwenview -p spotify,elisa,playerctld play-pause")
+	end),
+	awful.key({}, "XF86AudioPause", function()
+		awful.spawn("playerctl -i Gwenview -p playerctld play-pause", false)
+	end),
+	awful.key({}, "XF86AudioNext", function()
+		awful.spawn("playerctl -i Gwenview -p playerctld next", false)
+	end),
+	awful.key({}, "XF86AudioPrev", function()
+		awful.spawn("playerctl -i Gwenview -p playerctld previous", false)
+	end),
 
 	awful.key({}, "XF86AudioMute", function()
-			modify.toggle_mute()
-		end,
-		{ description = "Toggle Mute", group = "Media" }),
+		modify.toggle_mute()
+	end, { description = "Toggle Mute", group = "Media" }),
 
-	awful.key({}, "XF86AudioRaiseVolume", function()
+	awful.key(
+		{},
+		"XF86AudioRaiseVolume",
+		function()
 			modify.change_vol("1%+")
 			modify.updateVolume()
 		end, -- Num+up
-		{ description = "Increase Volume(1%)", group = "Media" }),
+		{ description = "Increase Volume(1%)", group = "Media" }
+	),
 
-	awful.key({}, "XF86AudioLowerVolume", function()
+	awful.key(
+		{},
+		"XF86AudioLowerVolume",
+		function()
 			modify.change_vol("1%-")
 		end, -- Num+down
-		{ description = "Decrease Volume(1%)", group = "Media" }),
-
-
-}
-
-
+		{ description = "Decrease Volume(1%)", group = "Media" }
+	),
+})
 
 -- Rofi
-awful.keyboard.append_global_keybindings {
+awful.keyboard.append_global_keybindings({
 
-	awful.key {
-		modifiers   = { mod.super },
-		key         = 'r',
-		description = 'Rofi Launcher',
-		group       = 'launcher',
-		on_press    = function()
-			awful.spawn.with_shell(
-				"rofi -show drun -theme ~/.config/rofi/launchers/type-1/style-6.rasi")
+	awful.key({
+		modifiers = { mod.super },
+		key = "r",
+		description = "Rofi Launcher",
+		group = "launcher",
+		on_press = function()
+			awful.spawn.with_shell("/home/harshit/.config/rofi/scripts/launcher_t1")
 		end,
-	},
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift },
-		key         = 'r',
-		description = 'Rofi Runner',
-		group       = 'launcher',
-		on_press    = function()
-			awful.spawn.with_shell(
-				"rofi -show run -theme ~/.config/rofi/launchers/type-1/style-6.rasi")
+	awful.key({
+		modifiers = { mod.super },
+		key = "w",
+		description = "Rofi Window Selector",
+		group = "launcher",
+		on_press = function()
+			awful.spawn.with_shell("/home/harshit/.config/rofi/scripts/launcher_t1_window")
 		end,
-	},
+	}),
 
-	awful.key {
-		modifiers   = { mod.super },
-		key         = 'v',
-		description = 'GreenClip (rofi clipboard manager)',
-		group       = 'launcher',
-		on_press    = function()
-			awful.spawn.with_shell(
-				"rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'")
+	awful.key({
+		modifiers = { mod.super },
+		key = "v",
+		description = "GreenClip (rofi clipboard manager)",
+		group = "launcher",
+		on_press = function()
+			awful.spawn.with_shell("rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'")
 		end,
-	},
+	}),
 
+	awful.key({
+		modifiers = { mod.super },
+		key = ".",
+		description = "Launch Rofimoji",
+		group = "launcher",
+		on_press = function()
+			awful.spawn.with_shell("rofimoji")
+		end,
+	}),
 
 	-- PowerButton
 
-	awful.key {
-		modifiers   = {},
-		key         = 'XF86PowerOff',
-		description = 'Rofi Powermenu',
-		group       = 'launcher',
-		on_press    = function() awful.spawn("/home/harshit/.config/rofi/scripts/powermenu_t1") end,
-	},
+	awful.key({
+		modifiers = {},
+		key = "XF86PowerOff",
+		description = "Rofi Powermenu",
+		group = "launcher",
+		on_press = function()
+			awful.spawn("/home/harshit/.config/rofi/scripts/powermenu_t1")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.shift },
-		key         = 'XF86PowerOff',
-		description = 'Turn off Screen',
-		group       = 'launcher',
-		on_press    = function() awful.spawn.with_shell("xset dpms force off; sleep 0.001; xset dpms force off") end,
-	},
+	awful.key({
+		modifiers = {},
+		key = "XF86TouchpadOn",
+		description = "Rofi Powermenu",
+		group = "launcher",
+		on_press = function()
+			awful.spawn("/home/harshit/.config/rofi/scripts/powermenu_t1")
+		end,
+	}),
 
-	awful.key {
-		modifiers   = {},
-		key         = 'Print',
-		description = 'Take a Screenshot',
-		group       = 'launcher',
-		on_press    = function() awful.spawn("spectacle") end,
-	},
-}
+	awful.key({
+		modifiers = { mod.shift },
+		key = "XF86PowerOff",
+		description = "Put to Sleep",
+		group = "launcher",
+		on_press = function()
+			awful.spawn.with_shell("systemctl suspend")
+		end,
+	}),
+
+	awful.key({
+		modifiers = { mod.ctrl },
+		key = "XF86PowerOff",
+		description = "Turn off Screen",
+		group = "launcher",
+		on_press = function()
+			awful.spawn.with_shell("xset dpms force off; sleep 0.001; xset dpms force off")
+		end,
+	}),
+
+	awful.key({
+		modifiers = {},
+		key = "Print",
+		description = "Take a Screenshot",
+		group = "launcher",
+		on_press = function()
+			awful.spawn("spectacle")
+		end,
+	}),
+})
 
 -- WM
-awful.keyboard.append_global_keybindings {
+awful.keyboard.append_global_keybindings({
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift },
-		key         = 'Down',
-		description = 'Increase Client Gap',
-		group       = 'tag',
-		on_press    = function() awful.tag.incgap(1) end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "Down",
+		description = "Increase Client Gap",
+		group = "tag",
+		on_press = function()
+			awful.tag.incgap(1)
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift },
-		key         = 'Up',
-		description = 'Decrease Client Gap',
-		group       = 'tag',
-		on_press    = function() awful.tag.incgap(-1) end,
-	},
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "Up",
+		description = "Decrease Client Gap",
+		group = "tag",
+		on_press = function()
+			awful.tag.incgap(-1)
+		end,
+	}),
 
-	awful.key {
-		modifiers   = { mod.super, mod.shift },
-		key         = 'KP_Begin',
-		description = 'Reset Client Gap',
-		group       = 'tag',
-		on_press    = function()
+	awful.key({
+		modifiers = { mod.super, mod.shift },
+		key = "KP_Begin",
+		description = "Reset Client Gap",
+		group = "tag",
+		on_press = function()
 			awful.screen.focused().selected_tag.gap = beautiful.useless_gap
 			naughty.notify({ text = "Window Gaps Reset" })
 		end,
-	},
+	}),
 	-- awful.key {
 	-- 	modifiers   = { mod.super, mod.alt },
 	-- 	key         = '1',
@@ -349,101 +460,100 @@ awful.keyboard.append_global_keybindings {
 	-- 		naughty.notify({ text = tostring(widgets.batteryInnerBar.forced_height) })
 	-- 	end,
 	-- },
-
-}
+})
 
 -- Wallpaper Changing
-awful.keyboard.append_global_keybindings {
-	awful.key {
+awful.keyboard.append_global_keybindings({
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Begin',
+		key = "KP_Begin",
 		description = "Set a wallpaper from all",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.all)
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Down',
+		key = "KP_Down",
 		description = "Set previous wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper("prev")
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Insert',
+		key = "KP_Insert",
 		description = "Set Current wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper("current")
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Up',
+		key = "KP_Up",
 		description = "Set a cat wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.cats)
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Home',
+		key = "KP_Home",
 		description = "Set an astro wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.astro)
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Prior',
+		key = "KP_Prior",
 		description = "Set a Calvin&Hobbes wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.calvin)
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Left',
+		key = "KP_Left",
 		description = "Set a redd wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.redd)
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Right',
+		key = "KP_Right",
 		description = "Set a cool wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.cool, "fill")
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_End',
+		key = "KP_End",
 		description = "Set a windoze wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.windoze, "fill")
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Next',
+		key = "KP_Next",
 		description = "Set a Find wallpaper",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(wall_src.find)
-		end
-	},
+		end,
+	}),
 	-- awful.key {
 	-- 	modifiers = { mod.super, mod.ctrl },
 	-- 	key = 'KP_End',
@@ -453,31 +563,26 @@ awful.keyboard.append_global_keybindings {
 	-- 		modify.changeWallpaper(wall_src.windoze)
 	-- 	end
 	-- },
-	awful.key {
+	awful.key({
 		modifiers = { mod.super, mod.ctrl },
-		key = 'KP_Enter',
+		key = "KP_Enter",
 		description = "Change wallpaper to fill",
 		group = "wallpaper",
 		on_press = function()
 			modify.changeWallpaper(nil, "toggleFitMode")
-		end
-	},
-	awful.key {
+		end,
+	}),
+	awful.key({
 		modifiers = { mod.super, mod.alt },
-		key = 'KP_Add',
+		key = "KP_Add",
 		description = "Set as current wallpaper",
 		group = "wallpaper",
 		on_press = function()
-			naughty.notify { text = "Set this as the current wallpaper" }
+			naughty.notify({ text = "Set this as the current wallpaper" })
 			modify.setAsCurrentWallpaper()
-		end
-	},
-}
-
-
-
-
-
+		end,
+	}),
+})
 
 -- --- For Desktop
 -- awful.keyboard.append_global_keybindings {
@@ -486,7 +591,6 @@ awful.keyboard.append_global_keybindings {
 -- 	{ description = "Next", group = "Media" }),
 -- awful.key({ "Control" }, "KP_Left", function() awful.spawn("playerctl -i Gwenview -p playerctld previous", false) end,
 -- 	{ description = "Previous", group = "Media" }),
-
 
 -- awful.key({ "Control" }, "KP_Begin", function()
 -- 		modify.toggle_mute()
