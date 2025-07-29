@@ -30,6 +30,7 @@ theme.icon = {
 	headphones = config .. "icons/bt/devices/headphones.svg",
 	speaker = config .. "icons/bt/devices/speaker.svg",
 	generalBluetooth = config .. "icons/bt/devices/general.svg",
+	mouse = config .. "icons/bt/devices/mouse.svg",
 }
 
 theme.catpuccin = require("colors.catpuccin")
@@ -152,8 +153,7 @@ theme.menu_width = dpi(100)
 -- beautiful.variable in your rc.lua
 --theme.bg_widget = "#cc0000"
 
-
-theme.wallpaper  = "/home/harshit/.config/awesome/theme/arch-black-4k.png"
+theme.wallpaper = "/home/harshit/.config/awesome/theme/arch-black-4k.png"
 -- theme.wallpaper  = "/home/harshit/Harshit_Work/kevin-kruger-B1DbAp0viKw-unsplash.jpg"
 -- theme.wallpaper                                 = themes_path .. "default/background.png"
 -- theme.wallpaper                                 = "~/.config/awesome/theme/Windows crash error [1920x1080].png"
