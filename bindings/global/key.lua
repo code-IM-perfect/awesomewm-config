@@ -1,10 +1,10 @@
-local awful = require 'awful'
-local hotkeys_popup = require 'awful.hotkeys_popup'
-require 'awful.hotkeys_popup.keys'
-local menubar = require 'menubar'
+local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup")
+require("awful.hotkeys_popup.keys")
+local menubar = require("menubar")
 
-local apps = require 'config.apps'
-local mod = require 'bindings.mod'
+local apps = require("config.apps")
+local mod = require("bindings.mod")
 -- local widgets = require'widgets'
 
 menubar.utils.terminal = apps.terminal
